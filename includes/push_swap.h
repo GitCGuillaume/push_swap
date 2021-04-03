@@ -13,7 +13,13 @@ typedef	struct	s_stack
 	int		number;
 }				t_stack;
 
-void			ft_lstadd_front_stack(t_stack **alst, t_stack *new);
-t_stack			*ft_lstnew_stack(int content);
+t_stack			*ft_lstnew_stack(ssize_t content);
+void			ft_lstadd_front_stack(t_stack **alst, t_stack *new, size_t position);
+void			ft_lstadd_back_stack(t_stack **alst, t_stack *new, size_t position);
+
+/*
+ ** Error Handler quicksort
+*/
+void	check_int_stack(void);
 
 #endif

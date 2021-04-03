@@ -19,8 +19,9 @@ void	ft_lstadd_front(t_list **alst, t_list *new)
 	*alst = new;
 }
 
-void	ft_lstadd_front_stack(t_stack **alst, t_stack *new)
+void	ft_lstadd_front_stack(t_stack **alst, t_stack *new, size_t position)
 {
-	new->next = *alst;
+	new->position = position;
+	new->head = *alst;
 	*alst = new;
 }

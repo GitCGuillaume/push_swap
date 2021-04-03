@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "../../includes/push_swap.h"
 
-t_stack	*ft_lstnew_stack(int content)
+t_stack	*ft_lstnew_stack(ssize_t content)
 {
 	t_stack	*t_lst;
 

@@ -12,6 +12,21 @@
 
 #include "libft.h"
 
+/*t_stack	*ft_lstlast_last(t_stack *lst)
+{
+	if (lst != NULL)
+	{
+		while (lst->next != NULL)
+		{
+			lst = lst->next;
+		}
+		return (lst);
+	}
+	else
+		return (NULL);
+	return (lst);
+}*/
+
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (lst != NULL)
