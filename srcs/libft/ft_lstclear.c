@@ -12,6 +12,24 @@
 
 #include "libft.h"
 
+void	ft_lstclear_stack(t_stack **lst)
+{
+	t_stack *keep_addresses;
+
+	if (!lst || !*lst)
+		return ;
+	if (*lst)
+	{
+		while (*lst != NULL)
+		{
+			keep_addresses = (*lst)->next;
+			ft_lstdelone_stack(*lst);
+			*lst = keep_addresses;
+		}
+		*lst = NULL;
+	}
+}
+
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list *keep_addresses;
