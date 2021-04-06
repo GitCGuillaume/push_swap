@@ -20,6 +20,15 @@ void			ft_lstdelone_stack(t_stack *lst);
 void			ft_lstclear_stack(t_stack **lst);
 
 /*
+ ** Inscrutions
+*/
+int	swap_sa(t_stack **stack_a);
+int	swap_sb(t_stack **stack_b);
+int	swap_ss(t_stack **stack_a, t_stack **stack_b);
+int	push_pa(t_stack **stack_a, t_stack **stack_b);
+int	push_pb(t_stack **stack_a, t_stack **stack_b);
+
+/*
  ** Error Handler quicksort
 */
 void	error_int_stack(void);

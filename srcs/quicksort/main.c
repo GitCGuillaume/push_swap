@@ -100,9 +100,18 @@ int	main(int argc, char **argv)
 		i++;
 		if (get_stack_ok == 0)
 			error_int_stack();
-	}
+	}	
 	if (get_stack_ok == 0)
 		error_int_stack();
+	i = 1;
+	while (argc > i)
+	{
+		get_stack_ok = get_stack(argv[i], &stack_b);
+		i++;
+		if (get_stack_ok == 0)
+			error_int_stack();
+	}	
+	
 	while (stack_a->next != NULL)
 	{
 		get_stack_ok = check_duplicate(*stack_a);
@@ -112,6 +121,11 @@ int	main(int argc, char **argv)
 	}
 	while (stack_a->head != NULL)
 		stack_a = stack_a->head;
+	//OK
+	//printf("sw=%d\n", swap_ss(&stack_a, &stack_b));
+	//OK
+	//printf("push_pa=%d\n", push_pa(&stack_a, &stack_b));
+	//printf("push_pb=%d\n", push_pb(&stack_a, &stack_b));
 	while (stack_a->next != NULL)
 	{
 		printf("anumber=%d\n", stack_a->number);
@@ -119,9 +133,22 @@ int	main(int argc, char **argv)
 		printf("next=%p\n", stack_a);
 		stack_a = stack_a->next;
 	}
+	printf("-----------------------\n");
+	while (stack_b->head != NULL)
+		stack_b = stack_b->head;
+	while (stack_b->next != NULL)
+	{
+		printf("bnumber=%d\n", stack_b->number);
+		printf("position=%zu\n", stack_b->position);
+		printf("head=%p\n", stack_b->head);
+		printf("next=%p\n", stack_b->next);
+		stack_b = stack_b->next;
+	}
 	while (stack_a->head != NULL)
 		stack_a = stack_a->head;
-	ft_lstclear_stack(&stack_b);
+	while (stack_b->head != NULL)
+		stack_b = stack_b->head;
 	ft_lstclear_stack(&stack_a);
+	ft_lstclear_stack(&stack_b);
 	return (0);
 }
