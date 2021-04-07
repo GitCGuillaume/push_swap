@@ -23,6 +23,9 @@ void	ft_lstadd_front_stack(t_stack **alst, t_stack *new, size_t position)
 {
 	new->position = position;
 	new->next = *alst;
-	(*alst)->head = new;
+	if (*alst != NULL)
+		(*alst)->head = new;
+	else
+		new->head = NULL;
 	*alst = new;
 }

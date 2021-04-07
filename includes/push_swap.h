@@ -20,17 +20,31 @@ void			ft_lstdelone_stack(t_stack *lst);
 void			ft_lstclear_stack(t_stack **lst);
 
 /*
- ** Inscrutions
+ ** Instructions
 */
 int	swap_sa(t_stack **stack_a);
 int	swap_sb(t_stack **stack_b);
 int	swap_ss(t_stack **stack_a, t_stack **stack_b);
 int	push_pa(t_stack **stack_a, t_stack **stack_b);
 int	push_pb(t_stack **stack_a, t_stack **stack_b);
+int	rotate_ra(t_stack **stack_a);
+int	rotate_rb(t_stack **stack_b);
+int	rotate_rr(t_stack **stack_a, t_stack **stack_b);
+int	rotate_rra(t_stack **stack_a);
+int	rotate_rrb(t_stack **stack_b);
+int	rotate_rrr(t_stack **stack_a, t_stack **stack_b);
+
+/*
+ ** Loop stack
+*/
+void	display(t_stack *stack);
+int	check_duplicate(t_stack *stack);
+int	loop_duplicate(t_stack *stack_a);
 
 /*
  ** Error Handler quicksort
 */
 void	error_int_stack(void);
+void	error(void);
 
 #endif

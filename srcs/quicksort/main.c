@@ -43,36 +43,18 @@ int	get_stack(char *str, t_stack **stack_a)
 					free(ptr);
 					if (atoi < -2147483648 || atoi > 2147483647)
 						return (0);
-					ft_lstadd_front_stack(stack_a, ft_lstnew_stack((int)atoi), 1 + (*stack_a)->position);
+					if (*stack_a != NULL)
+						ft_lstadd_front_stack(stack_a, ft_lstnew_stack((int)atoi), 1 + (*stack_a)->position);
+					else
+					{
+						ft_lstadd_front_stack(stack_a, ft_lstnew_stack((int)atoi), 1);
+					}
 					start = 0;
 				}
 				if (str[i] != '\0' && str[i] != ' ')
 					return (0);
 			}
 		}
-	}
-	return (1);
-}
-
-/*
- * * Check duplicate values
-*/
-int	check_duplicate(t_stack stack)
-{
-	int	value;
-	size_t	position;
-
-	value = stack.number;
-	position = stack.position;
-	while (stack.head != NULL)
-		stack = *stack.head;
-	while (stack.next != NULL)
-	{
-		if (position != stack.position)
-			if (value == stack.number)
-				return (0);
-		stack = *stack.next;
-		printf("value=%d position=%zu\n", value, position);
 	}
 	return (1);
 }
@@ -92,15 +74,20 @@ int	main(int argc, char **argv)
 	get_stack_ok = 0;
 	if (argc < 2)
 		exit(0);
-	stack_a = ft_lstnew_stack(0);
-	stack_b = ft_lstnew_stack(0);
+	stack_a = NULL;
+	stack_b = NULL;
 	while (argc > i)
 	{
 		get_stack_ok = get_stack(argv[i], &stack_a);
 		i++;
 		if (get_stack_ok == 0)
-			error_int_stack();
-	}	
+		{
+			error();
+			ft_lstclear_stack(&stack_a);
+			ft_lstclear_stack(&stack_b);
+			exit(EXIT_FAILURE);
+		}
+	}
 	if (get_stack_ok == 0)
 		error_int_stack();
 	i = 1;
@@ -111,43 +98,28 @@ int	main(int argc, char **argv)
 		if (get_stack_ok == 0)
 			error_int_stack();
 	}	
-	
-	while (stack_a->next != NULL)
+	get_stack_ok = loop_duplicate(stack_a);
+	if (get_stack_ok == 0)
 	{
-		get_stack_ok = check_duplicate(*stack_a);
-		if (get_stack_ok == 0)
-			error_int_stack();
-		stack_a = stack_a->next;
+		ft_lstclear_stack(&stack_a);
+		ft_lstclear_stack(&stack_b);
+		exit(EXIT_FAILURE);
 	}
-	while (stack_a->head != NULL)
-		stack_a = stack_a->head;
 	//OK
 	//printf("sw=%d\n", swap_ss(&stack_a, &stack_b));
 	//OK
 	//printf("push_pa=%d\n", push_pa(&stack_a, &stack_b));
 	//printf("push_pb=%d\n", push_pb(&stack_a, &stack_b));
-	while (stack_a->next != NULL)
-	{
-		printf("anumber=%d\n", stack_a->number);
-		printf("position=%zu\n", stack_a->position);
-		printf("next=%p\n", stack_a);
-		stack_a = stack_a->next;
-	}
+	//OK
+	//printf("rotate_ra=%d\n", rotate_ra(&stack_a));
+	//printf("rotate_rb=%d\n", rotate_rb(&stack_a));
+	//printf("rotate_rr=%d\n", rotate_rr(&stack_a, &stack_b));
+	//printf("rotate_rra=%d\n", rotate_rra(&stack_a));
+	//printf("rotate_rrb=%d\n", rotate_rrb(&stack_b));
+	//printf("rotate_rrr=%d\n", rotate_rrr(&stack_a, &stack_b));
+	display(stack_a);
 	printf("-----------------------\n");
-	while (stack_b->head != NULL)
-		stack_b = stack_b->head;
-	while (stack_b->next != NULL)
-	{
-		printf("bnumber=%d\n", stack_b->number);
-		printf("position=%zu\n", stack_b->position);
-		printf("head=%p\n", stack_b->head);
-		printf("next=%p\n", stack_b->next);
-		stack_b = stack_b->next;
-	}
-	while (stack_a->head != NULL)
-		stack_a = stack_a->head;
-	while (stack_b->head != NULL)
-		stack_b = stack_b->head;
+	display(stack_b);
 	ft_lstclear_stack(&stack_a);
 	ft_lstclear_stack(&stack_b);
 	return (0);

@@ -1,5 +1,5 @@
 #include "../../includes/push_swap.h"
-#include <stdio.h>
+
 int	push_pa(t_stack **stack_a, t_stack **stack_b)
 {
 	ssize_t	atoi;
