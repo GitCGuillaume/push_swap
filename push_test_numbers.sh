@@ -31,3 +31,13 @@ echo "-----------"
 echo "CHECK DUPLICATES"
 echo "-----------"
 ./a.out 1 2 3 47 2 8
+echo "-----------"
+./a.out
+echo "-----------"
+./a.out 0
+echo "-----------"
+./a.out 1
+echo "-----------"
+./a.out 1 2
+echo "-----------"
+./a.out 1 2 3

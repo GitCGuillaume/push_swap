@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-/*t_stack	*ft_lstlast_last(t_stack *lst)
+t_stack	*ft_lstlast_stack(t_stack *lst)
 {
 	if (lst != NULL)
 	{
@@ -25,7 +25,7 @@
 	else
 		return (NULL);
 	return (lst);
-}*/
+}
 
 t_list	*ft_lstlast(t_list *lst)
 {

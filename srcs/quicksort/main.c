@@ -2,10 +2,23 @@
 #include "../../includes/push_swap.h"
 #include "../libft/libft.h"
 
+void	copy_stack(t_stack *stack_a)
+{
+	t_stack *lst_cpy;
+
+	while (stack_a != NULL)
+	{
+		ft_lstadd_back_stack(&lst_cpy, ft_lstnew_stack(stack_a->number), stack_a->position);
+		stack_a = stack_a->next;
+	}
+	quicksort_main(lst_cpy);
+	//display(lst_cpy);
+	free(lst_cpy);
+}
+
 /*
  ** getting the stack from argv
 */
-
 int	get_stack(char *str, t_stack **stack_a)
 {
 	ssize_t	atoi;
@@ -90,14 +103,6 @@ int	main(int argc, char **argv)
 	}
 	if (get_stack_ok == 0)
 		error_int_stack();
-	i = 1;
-	while (argc > i)
-	{
-		get_stack_ok = get_stack(argv[i], &stack_b);
-		i++;
-		if (get_stack_ok == 0)
-			error_int_stack();
-	}	
 	get_stack_ok = loop_duplicate(stack_a);
 	if (get_stack_ok == 0)
 	{
@@ -105,18 +110,28 @@ int	main(int argc, char **argv)
 		ft_lstclear_stack(&stack_b);
 		exit(EXIT_FAILURE);
 	}
-	//OK
-	//printf("sw=%d\n", swap_ss(&stack_a, &stack_b));
-	//OK
-	//printf("push_pa=%d\n", push_pa(&stack_a, &stack_b));
-	//printf("push_pb=%d\n", push_pb(&stack_a, &stack_b));
-	//OK
-	//printf("rotate_ra=%d\n", rotate_ra(&stack_a));
-	//printf("rotate_rb=%d\n", rotate_rb(&stack_a));
-	//printf("rotate_rr=%d\n", rotate_rr(&stack_a, &stack_b));
-	//printf("rotate_rra=%d\n", rotate_rra(&stack_a));
-	//printf("rotate_rrb=%d\n", rotate_rrb(&stack_b));
-	//printf("rotate_rrr=%d\n", rotate_rrr(&stack_a, &stack_b));
+	/*rotate_rb(&stack_a);
+	push_pb(&stack_a, &stack_b);
+	push_pb(&stack_a, &stack_b);
+	rotate_ra(&stack_a);
+	swap_sa(&stack_a);
+	push_pb(&stack_a, &stack_b);
+	rotate_rra(&stack_a);
+	push_pa(&stack_a, &stack_b);
+	rotate_rrb(&stack_b);
+	swap_sa(&stack_a);
+	push_pa(&stack_a, &stack_b);
+	rotate_rb(&stack_b);
+	push_pa(&stack_a, &stack_b);
+	*/
+	//test(*stack_a);
+	//swap_sa(&stack_a);
+	//copy_stack(stack_a);
+	//printf("-----------------------\n");
+	rotate_rra(&stack_a);
+	push_pb(&stack_a, &stack_b);
+	rotate_ra(&stack_a);
+	push_pa(&stack_a, &stack_b);
 	display(stack_a);
 	printf("-----------------------\n");
 	display(stack_b);

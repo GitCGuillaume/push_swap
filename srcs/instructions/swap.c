@@ -5,6 +5,8 @@ int	swap_sa(t_stack **stack_a)
 	int	old_a;
 	int	old_b;
 
+	if (ft_lstsize_stack(*stack_a) <= 1)
+		return (0);
 	old_a = (*stack_a)->number;
 	old_b = (*stack_a)->next->number;
 	ft_swap(&(*stack_a)->number, &(*stack_a)->next->number);
@@ -18,6 +20,8 @@ int	swap_sb(t_stack **stack_b)
 	int	old_a;
 	int	old_b;
 
+	if (ft_lstsize_stack(*stack_b) <= 1)
+		return (0);
 	old_a = (*stack_b)->number;
 	old_b = (*stack_b)->next->number;
 	ft_swap(&(*stack_b)->number, &(*stack_b)->next->number);

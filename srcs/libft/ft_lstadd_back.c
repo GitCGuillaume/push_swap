@@ -12,7 +12,7 @@
 
 #include "libft.h"
 #include "../../includes/push_swap.h"
-/*
+
 void	ft_lstadd_back_stack(t_stack **alst, t_stack *new, size_t position)
 {
 	t_stack *t_lst;
@@ -31,7 +31,7 @@ void	ft_lstadd_back_stack(t_stack **alst, t_stack *new, size_t position)
 		else
 			*alst = new;
 	}
-}*/
+}
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {

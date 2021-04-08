@@ -18,6 +18,8 @@ void			ft_lstadd_front_stack(t_stack **alst, t_stack *new, size_t position);
 void			ft_lstadd_back_stack(t_stack **alst, t_stack *new, size_t position);
 void			ft_lstdelone_stack(t_stack *lst);
 void			ft_lstclear_stack(t_stack **lst);
+t_stack			*ft_lstlast_stack(t_stack *lst);
+int			ft_lstsize_stack(t_stack *lst);
 
 /*
  ** Instructions
@@ -46,5 +48,10 @@ int	loop_duplicate(t_stack *stack_a);
 */
 void	error_int_stack(void);
 void	error(void);
+
+/*
+ ** Quicksort
+*/
+void	quicksort_main(t_stack *lst);
 
 #endif
