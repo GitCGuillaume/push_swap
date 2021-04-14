@@ -2,13 +2,11 @@
 #include <stdio.h>
 void	display(t_stack *stack)
 {
-	t_stack *lst;
-
-	lst = stack;
-	while (lst != NULL)
+	while (stack != NULL)
 	{
-		printf("number=%d\n", lst->number);
-		lst = lst->next;
+		printf("number=%d\n", stack->number);
+		printf("position=%d\n", stack->position);
+		stack = stack->next;
 	}
 }
 

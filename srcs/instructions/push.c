@@ -13,7 +13,7 @@ int	push_pa(t_stack **stack_a, t_stack **stack_b)
 	while ((*stack_b)->head != NULL)
 		stack_b = &(*stack_b)->head;
 	atoi = (*stack_b)->number;
-	ft_lstadd_front_stack(&(*stack_a), ft_lstnew_stack((int)atoi), 1 + (*stack_a)->position);
+	ft_lstadd_front_stack(&(*stack_a), ft_lstnew_stack((int)atoi));
 	if ((*stack_b)->next != NULL)
 	{
 		*stack_b = (*stack_b)->next;
@@ -34,10 +34,12 @@ int	push_pb(t_stack **stack_a, t_stack **stack_b)
 
 	if (*stack_a == NULL)
 		return (0);
-	if (*stack_b)
-		return (1);
-	while ((*stack_a)->head != NULL)
-		stack_a = &(*stack_a)->head;
+	printf("(*stack_a)->number=%d\n", (*stack_a)->number);
+	if (*stack_a)
+	{
+		while ((*stack_a)->head != NULL)
+			stack_a = &(*stack_a)->head;
+	}
 	if (*stack_b)
 	{	
 		while ((*stack_b)->head != NULL)
@@ -45,9 +47,9 @@ int	push_pb(t_stack **stack_a, t_stack **stack_b)
 	}
 	atoi = (*stack_a)->number;
 	if (*stack_b == NULL)
-		ft_lstadd_front_stack(&(*stack_b), ft_lstnew_stack((int)atoi), 1);
+		ft_lstadd_front_stack(&(*stack_b), ft_lstnew_stack((int)atoi));
 	else
-		ft_lstadd_front_stack(&(*stack_b), ft_lstnew_stack((int)atoi), 1 + (*stack_b)->position);
+		ft_lstadd_front_stack(&(*stack_b), ft_lstnew_stack((int)atoi));
 	if ((*stack_a)->next != NULL)
 	{
 		*stack_a = (*stack_a)->next;
