@@ -1,6 +1,6 @@
 #include "../../includes/push_swap.h"
 
-int	swap_sa(t_stack **stack_a)
+int	swap_sa(t_stack **stack_a, t_stack **median)
 {
 	int	old_a;
 	int	old_b;
@@ -10,6 +10,17 @@ int	swap_sa(t_stack **stack_a)
 	old_a = (*stack_a)->number;
 	old_b = (*stack_a)->next->number;
 	ft_swap(&(*stack_a)->number, &(*stack_a)->next->number);
+	ft_swap(&(*stack_a)->is_median, &(*stack_a)->next->is_median);
+	if (median && *median)
+	{
+		if ((*median)->next != NULL)
+			*median = (*median)->next;
+		else
+		{
+			while ((*median)->head != NULL)
+				*median = (*median)->head;
+		}
+	}
 	if (old_a == (*stack_a)->number || old_b == (*stack_a)->next->number)
 		return (0);
 	return (1);
@@ -31,12 +42,12 @@ int	swap_sb(t_stack **stack_b)
 }
 
 
-int	swap_ss(t_stack **stack_a, t_stack **stack_b)
+int	swap_ss(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 {
 	int	sa;
 	int	sb;
 
-	sa = swap_sa(stack_a);
+	sa = swap_sa(stack_a, median);
 	sb = swap_sb(stack_b);
 	if (sa == 0 || sb == 0)
 		return (0);

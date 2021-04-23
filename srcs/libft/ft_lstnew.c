@@ -20,6 +20,7 @@ t_stack	*ft_lstnew_stack(ssize_t content)
 	if (!(t_lst = malloc(sizeof(t_stack))))
 		return (NULL);
 	t_lst->position = 1;
+	t_lst->is_median = 0;
 	t_lst->number = content;
 	t_lst->head = NULL;
 	t_lst->next = NULL;

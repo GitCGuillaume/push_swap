@@ -10,6 +10,7 @@ typedef	struct	s_stack
 	struct s_stack	*head;
 	struct s_stack	*next;
 	int		position;
+	int		is_median;
 	int		number;
 }				t_stack;
 
@@ -24,17 +25,17 @@ int			ft_lstsize_stack(t_stack *lst);
 /*
  ** Instructions
 */
-int	swap_sa(t_stack **stack_a);
+int	swap_sa(t_stack **stack_a, t_stack **median);
 int	swap_sb(t_stack **stack_b);
-int	swap_ss(t_stack **stack_a, t_stack **stack_b);
+int	swap_ss(t_stack **stack_a, t_stack **stack_b, t_stack **median);
 int	push_pa(t_stack **stack_a, t_stack **stack_b);
 int	push_pb(t_stack **stack_a, t_stack **stack_b);
-int	rotate_ra(t_stack **stack_a);
+int	rotate_ra(t_stack **stack_a, t_stack **median);
 int	rotate_rb(t_stack **stack_b);
-int	rotate_rr(t_stack **stack_a, t_stack **stack_b);
-int	rotate_rra(t_stack **stack_a);
+int	rotate_rr(t_stack **stack_a, t_stack **stack_b, t_stack **median);
+int	rotate_rra(t_stack **stack_a, t_stack **median);
 int	rotate_rrb(t_stack **stack_b);
-int	rotate_rrr(t_stack **stack_a, t_stack **stack_b);
+int	rotate_rrr(t_stack **stack_a, t_stack **stack_b, t_stack **median);
 
 /*
  ** Loop stack
@@ -52,6 +53,14 @@ void	error(void);
 /*
  ** Quicksort
 */
-void	quicksort_main(t_stack *lst);
+
+int	copy_stack(t_stack *stack_a);
+int	quicksort_median(t_stack *lst);
+
+/*
+ ** Resolver push_swap
+*/
+
+int	resolver(t_stack **stack_a);
 
 #endif

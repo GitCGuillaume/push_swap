@@ -3,26 +3,35 @@
 int	push_pa(t_stack **stack_a, t_stack **stack_b)
 {
 	ssize_t	atoi;
+	t_stack	*keep;
 
-	if (ft_lstsize_stack(*stack_b) == 0)
-		return (0);
-	if (*stack_a == NULL)
-		return (1);
-	while ((*stack_a)->head != NULL)
-		stack_a = &(*stack_a)->head;
-	while ((*stack_b)->head != NULL)
-		stack_b = &(*stack_b)->head;
+	if (stack_b == NULL || *stack_b == NULL || stack_a == NULL)
+		return (-1);
+	if (*stack_a)
+	{
+		while ((*stack_a)->head != NULL)
+			*stack_a = (*stack_a)->head;
+	}
+	if (*stack_b)
+	{
+		while ((*stack_b)->head != NULL)
+			*stack_b = (*stack_b)->head;
+	}
 	atoi = (*stack_b)->number;
-	ft_lstadd_front_stack(&(*stack_a), ft_lstnew_stack((int)atoi));
+	ft_lstadd_front_stack(stack_a, ft_lstnew_stack((int)atoi));
 	if ((*stack_b)->next != NULL)
 	{
+		keep = (*stack_b);
 		*stack_b = (*stack_b)->next;
-		ft_lstdelone_stack((*stack_b)->head);
-		(*stack_b)->head = NULL;
+		if ((*stack_b)->head != NULL)
+		{
+			ft_lstdelone_stack(keep);
+			(*stack_b)->head = NULL;
+		}
 	}
 	else
 	{
-		ft_lstdelone_stack((*stack_b));
+		ft_lstdelone_stack(*stack_b);
 		*stack_b = NULL;
 	}
 	return (1);
@@ -32,33 +41,32 @@ int	push_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	ssize_t	atoi;
 
-	if (*stack_a == NULL)
-		return (0);
-	printf("(*stack_a)->number=%d\n", (*stack_a)->number);
+	if (stack_a == NULL || *stack_a == NULL || stack_b == NULL)
+		return (-1);
 	if (*stack_a)
 	{
 		while ((*stack_a)->head != NULL)
-			stack_a = &(*stack_a)->head;
+			*stack_a = (*stack_a)->head;
 	}
 	if (*stack_b)
-	{	
+	{
 		while ((*stack_b)->head != NULL)
-			stack_b = &(*stack_b)->head;
+			*stack_b = (*stack_b)->head;
 	}
 	atoi = (*stack_a)->number;
-	if (*stack_b == NULL)
-		ft_lstadd_front_stack(&(*stack_b), ft_lstnew_stack((int)atoi));
-	else
-		ft_lstadd_front_stack(&(*stack_b), ft_lstnew_stack((int)atoi));
+	ft_lstadd_front_stack(stack_b, ft_lstnew_stack((int)atoi));
 	if ((*stack_a)->next != NULL)
 	{
 		*stack_a = (*stack_a)->next;
-		ft_lstdelone_stack((*stack_a)->head);
-		(*stack_a)->head = NULL;
+		if ((*stack_a)->head != NULL)
+		{
+			ft_lstdelone_stack((*stack_a)->head);
+			(*stack_a)->head = NULL;
+		}
 	}
 	else
 	{
-		ft_lstdelone_stack((*stack_a)->head);
+		ft_lstdelone_stack(*stack_a);
 		*stack_a = NULL;
 	}
 	return (1);
