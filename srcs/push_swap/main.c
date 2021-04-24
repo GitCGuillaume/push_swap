@@ -178,12 +178,12 @@ int	main(int argc, char **argv)
 	push_pa(&stack_a, &stack_b);
 	push_pa(&stack_a, &stack_b);
 */
-	if (copy_stack(stack_a) == -1)
+	/*if (copy_stack(stack_a) == -1)
 	{
 		error();
 		ft_lstclear_stack(&stack_a);
 		exit(EXIT_FAILURE);
-	}
+	}*/
 	resolver(&stack_a);
 	printf("stack_a-----------------------\n");
 	display(stack_a);
