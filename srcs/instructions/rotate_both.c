@@ -2,7 +2,7 @@
 
 int	rotate_rr(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 {
-	rotate_ra(stack_a, 0);
+	rotate_ra(stack_a, median);
 	rotate_rb(stack_b);
 	return (1);
 }

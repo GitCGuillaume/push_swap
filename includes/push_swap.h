@@ -3,13 +3,13 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../srcs/libft/libft.h"
+# include "libft.h"
 
 typedef	struct	s_stack
 {
 	struct s_stack	*head;
 	struct s_stack	*next;
-	int		position;
+	size_t		position;
 	int		is_median;
 	int		number;
 }				t_stack;

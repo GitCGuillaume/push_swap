@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 int	ft_lstsize_stack(t_stack *lst)
 {

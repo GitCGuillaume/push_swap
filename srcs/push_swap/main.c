@@ -185,9 +185,7 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}*/
 	resolver(&stack_a);
-	printf("stack_a-----------------------\n");
-	display(stack_a);
-	printf("stack_b-----------------------\n");
+	//display(stack_a);
 	//display(stack_b);
 	ft_lstclear_stack(&stack_a);
 	ft_lstclear_stack(&stack_b);

@@ -18,6 +18,26 @@ t_stack	*get_biggest(t_stack **stack)
 	return (biggest);
 }
 
+int	get_smallest_median(t_stack **stack, int median)
+{
+	int	size;
+
+	size = 0;
+	if (*stack)
+	{
+		while (*stack != NULL)
+		{
+			if (median > (*stack)->number)
+			{
+				return (size);
+			}
+			size++;
+			stack = &(*stack)->next;
+		}
+	}
+	return (median);
+}
+
 int	rotation_move(t_stack **stack, int biggest)
 {
 	int	size;
@@ -118,26 +138,59 @@ void	stack_a_order(t_stack **stack_a, t_stack **median)
 
 void	sort_stack_a(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 {
+	int	size;
+	int	max;
 	t_stack	*head;
 
+	size = get_smallest_median(stack_a, (*median)->number);
+	size--;
+	max = ft_lstsize_stack(*stack_b);
 	head = *stack_a;
 	if (stack_a && *stack_a)
 	{
-		if (head->number > (*median)->number)
+		//while (size > 0 && max > size)
+		//{
+		if (size != -1)
+		{
+			if (max / 2 > size)
+			{
+				rotate_ra(stack_a, median);
+				ft_putstr_fd("ra\n", 1);
+				size--;
+			}
+			else
+			{
+				rotate_rra(stack_a, median);
+				ft_putstr_fd("rra\n", 1);
+				size++;
+			}
+		}
+		if (size == -1)
+		{
+			ft_putstr_fd("pb\n", 1);
+			push_pb(stack_a, stack_b);
+		}
+		/*if ((*median)->number > head->number)
+		{
+			ft_putstr_fd("pb\n", 1);
+			push_pb(stack_a, stack_b);
+		}*/
+		/*if (head->number > (*median)->number)
 		{
 			ft_putstr_fd("ra\n", 1);
 			rotate_ra(stack_a, median);
 		}
 		else if ((*median)->number > head->number)
 		{
-			ft_putstr_fd("pb\n", 1);
+			//ft_putstr_fd("pb\n", 1);
+			printf("pb\n");
 			push_pb(stack_a, stack_b);
 		}
 		else if (*median == head)
 		{
 			ft_putstr_fd("ra\n", 1);
 			rotate_ra(stack_a, median);
-		}
+		}*/
 	}
 }
 
@@ -176,7 +229,7 @@ int	resolver(t_stack **stack_a)
 	t_stack	*median;
 	int	result;
 
-	t_stack	*head;
+	//t_stack	*head;
 	stack_b = NULL;
 	median = NULL;
 	if (stack_a && *stack_a)
@@ -204,7 +257,6 @@ int	resolver(t_stack **stack_a)
 		while (stack_b != NULL)
 			sort_stack_b(stack_a, &stack_b);
 	}
-	printf("stack_b\n");
 	display(stack_b);
 	ft_lstclear_stack(&stack_b);
 	return (0);

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	partition(t_stack *lst, t_stack *first, t_stack *last)
+int	partition(t_stack *first, t_stack *last)
 {
 	t_stack *pivot;
 	t_stack	*keep_address;
@@ -21,15 +21,15 @@ int	partition(t_stack *lst, t_stack *first, t_stack *last)
 	return (0);
 }
 
-void	quicksort(t_stack *lst, t_stack *first, t_stack *last)
+void	quicksort(t_stack *first, t_stack *last)
 {
 	if (last->position > first->position)
 	{
-		partition(lst, first, last);
+		partition(first, last);
 		if (last->head != NULL)
-			quicksort(lst, first, last->head);
+			quicksort(first, last->head);
 		if (first->next != NULL)
-			quicksort(lst, first->next, last);
+			quicksort(first->next, last);
 	}
 }
 
@@ -67,7 +67,7 @@ int	quicksort_median(t_stack *lst)
 		return (-1);
 	first = lst;
 	last = ft_lstlast_stack(lst);
-	quicksort(lst, first, last);
+	quicksort(first, last);
 	size = ft_lstsize_stack(lst);
 	median = size % 2;
 	if (median == 1)
