@@ -33,6 +33,7 @@ clean:
 	$(MAKE) clean -C libft/
 
 fclean:
+	rm -f push_swap
 	make clean
 	$(MAKE) fclean -C libft/
 

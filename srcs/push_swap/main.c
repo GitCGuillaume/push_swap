@@ -1,16 +1,19 @@
 #include "push_swap.h"
 #include "libft.h"
 
+#include <stdio.h>
 int	copy_stack(t_stack *stack_a)
 {
 	t_stack *lst_median;
 	t_stack	*keep_address;
-	int	median;
+	t_stack	*median;
 
 	keep_address = stack_a;
 	lst_median = NULL;
 	if (keep_address == NULL || stack_a == NULL)
+	{
 		return (-1);
+	}
 	while (keep_address != NULL)
 	{
 		ft_lstadd_back_stack(&lst_median, ft_lstnew_stack(keep_address->number));
@@ -19,12 +22,15 @@ int	copy_stack(t_stack *stack_a)
 	if (lst_median == NULL)
 		return (-1);
 	median = quicksort_median(lst_median);
-	if (median == -1)
+	if (median == NULL)
+	{
+		printf("eee");
 		return (-1);
+	}
 	ft_lstclear_stack(&lst_median);
 	while (stack_a)
 	{
-		if (stack_a->number == median)
+		if (stack_a->number == median->number)
 			stack_a->is_median = 1;
 		stack_a = stack_a->next;
 	}
@@ -154,7 +160,13 @@ int	main(int argc, char **argv)
 		}
 	}
 	if (get_stack_ok == -1)
-		error_int_stack();
+	{
+		error();
+		ft_lstclear_stack(&stack_a);
+		ft_lstclear_stack(&stack_b);
+		exit(EXIT_FAILURE);
+	//	error_int_stack();
+	}
 	get_stack_ok = loop_duplicate(stack_a);
 	if (get_stack_ok == -1)
 	{
@@ -185,6 +197,7 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}*/
 	resolver(&stack_a);
+	//printf("\nstack_a\n");
 	//display(stack_a);
 	//display(stack_b);
 	ft_lstclear_stack(&stack_a);

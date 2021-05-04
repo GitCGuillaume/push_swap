@@ -3,13 +3,14 @@
 
 void	display(t_stack *stack)
 {
+		printf("\n--------------\n");
 	while (stack != NULL)
 	{
 		printf("number=%d\n", stack->number);
 		//printf("current=%p", stack);
 	//	printf("number head=%p", stack->head);
 	//	printf("number next=%p", stack->next);
-		//printf("position=%d\n", stack->position);
+		//printf("position=%zu\n", stack->position);
 		printf("is_median=%d\n", stack->is_median);
 		stack = stack->next;
 	}
@@ -45,7 +46,6 @@ int	loop_duplicate(t_stack *stack_a)
 		get_stack_ok = check_duplicate(stack_a);
 		if (get_stack_ok == -1)
 		{
-			error();
 			return (-1);
 		}
 		stack_a = stack_a->next;

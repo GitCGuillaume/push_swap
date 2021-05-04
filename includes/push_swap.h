@@ -55,7 +55,7 @@ void	error(void);
 */
 
 int	copy_stack(t_stack *stack_a);
-int	quicksort_median(t_stack *lst);
+t_stack	*quicksort_median(t_stack *lst);
 
 /*
  ** Resolver push_swap

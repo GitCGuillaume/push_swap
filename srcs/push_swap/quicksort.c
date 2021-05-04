@@ -1,35 +1,37 @@
 #include "push_swap.h"
-
-int	partition(t_stack *first, t_stack *last)
+#include <stdio.h>
+t_stack	*partition(t_stack **first, t_stack **last)
 {
-	t_stack *pivot;
-	t_stack	*keep_address;
+	t_stack	**keep_address;
+	t_stack	**pivot;
 
+	ft_swap(&(*first)->number, &(*last)->number);
 	keep_address = first;
-	ft_swap(&first->number, &last->number);
-	pivot = last;
-	while (first->next != NULL && (last->position > first->position))
+	while ((*first)->next != NULL && ((*last)->position > (*first)->position))
 	{
-		if (last->number > first->number)
+		if ((*last)->number > (*first)->number)
 		{
-			ft_swap(&first->number, &keep_address->number);
-			keep_address = keep_address->next;
+			ft_swap(&(*first)->number, &(*keep_address)->number);
+			keep_address = &(*keep_address)->next;
 		}
-		first = first->next;
+		first = &(*first)->next;
 	}
-	ft_swap(&last->number, &keep_address->number);
-	return (0);
+	ft_swap(&(*last)->number, &(*keep_address)->number);
+	pivot = keep_address;
+	return (*pivot);
 }
 
 void	quicksort(t_stack *first, t_stack *last)
 {
+	t_stack	*pivot;
+
 	if (last->position > first->position)
 	{
-		partition(first, last);
-		if (last->head != NULL)
-			quicksort(first, last->head);
-		if (first->next != NULL)
-			quicksort(first->next, last);
+		pivot = partition(&first, &last);
+		if (pivot->head != NULL)
+			quicksort(first, pivot->head);
+		if (pivot->next != NULL)
+			quicksort(pivot->next, last);
 	}
 }
 
@@ -37,26 +39,26 @@ void	quicksort(t_stack *first, t_stack *last)
  ** Need to find the median from the list
 */
 
-int	get_median(t_stack *lst, int median)
+t_stack	*get_median(t_stack *lst, int median)
 {
 	int	i;
 
 	i = 0;
-	while (lst != NULL && median > i)
+	while (lst != NULL)
 	{
-		i++;
 		if (i == median)
-			return (lst->number);
+			return (lst);
+		i++;
 		lst = lst->next;
 	}
-	return (0);
+	return (lst);
 }
 
 /*
  ** Quicksort Algorithm with pivot
 */
 
-int	quicksort_median(t_stack *lst)
+t_stack	*quicksort_median(t_stack *lst)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -64,16 +66,15 @@ int	quicksort_median(t_stack *lst)
 	int	size;
 
 	if (lst == NULL)
-		return (-1);
+		return (NULL);
 	first = lst;
 	last = ft_lstlast_stack(lst);
 	quicksort(first, last);
 	size = ft_lstsize_stack(lst);
 	median = size % 2;
 	if (median == 1)
-		median = (size + 1) / 2;
+		median = (size + 1) / 4;
 	else
-		median = size / 2;
-	median = get_median(lst, median);
-	return (median);
+		median = size / 4;
+	return (get_median(lst, median));
 }
