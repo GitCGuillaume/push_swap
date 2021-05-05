@@ -53,19 +53,19 @@ int	get_last_n(char **line, char **m_ln, int *res)
 	if (!m_ln)
 		return (clear_memory(0, line));
 	if (!*m_ln || *m_ln[0] == '\0')
-		m_tmp = ft_substr(*line, 0, ft_len(*line));
+		m_tmp = ft_substr_g(*line, 0, ft_len(*line));
 	else
-		m_tmp = ft_substr(*m_ln, 0, ft_len(*m_ln));
+		m_tmp = ft_substr_g(*m_ln, 0, ft_len(*m_ln));
 	if (m_tmp == NULL)
 		return (clear_memory(line, m_ln));
 	free(*m_ln);
 	*m_ln = m_tmp;
-	m_tmp = ft_strdup(*m_ln);
+	m_tmp = ft_strdup_g(*m_ln);
 	if (m_tmp == NULL)
 		return (clear_memory(line, m_ln));
 	free(*line);
 	*line = m_tmp;
-	m_tmp = ft_substr(*m_ln, len_n(*m_ln, res), ft_len(*m_ln));
+	m_tmp = ft_substr_g(*m_ln, len_n(*m_ln, res), ft_len(*m_ln));
 	if (m_tmp == NULL)
 		return (clear_memory(line, m_ln));
 	free(*m_ln);
@@ -82,7 +82,7 @@ int	read_line(int fd, char **line, char **mem_line)
 	int		ret;
 
 	free(*line);
-	*line = ft_strdup("");
+	*line = ft_strdup_g("");
 	ret = 1;
 	while (ret > 0)
 	{

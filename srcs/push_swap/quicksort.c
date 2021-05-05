@@ -46,10 +46,11 @@ t_stack	*get_median(t_stack *lst, int median)
 	i = 0;
 	while (lst != NULL)
 	{
+		i++;
 		if (i == median)
 			return (lst);
-		i++;
 		lst = lst->next;
+		//printf("lst=n %d median=%d\n", lst->number, median);
 	}
 	return (lst);
 }
@@ -72,9 +73,19 @@ t_stack	*quicksort_median(t_stack *lst)
 	quicksort(first, last);
 	size = ft_lstsize_stack(lst);
 	median = size % 2;
-	if (median == 1)
-		median = (size + 1) / 4;
+	if (size < 100)
+	{
+		if (median == 1)
+			median = (size + 1) / 2;
+		else
+			median = size / 2;
+	}
 	else
-		median = size / 4;
+	{
+		if (median == 1)
+			median = (size + 1) / 4;
+		else
+			median = size / 4;
+	}
 	return (get_median(lst, median));
 }

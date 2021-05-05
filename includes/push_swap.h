@@ -23,6 +23,13 @@ t_stack			*ft_lstlast_stack(t_stack *lst);
 int			ft_lstsize_stack(t_stack *lst);
 
 /*
+ ** GLOBALS FUCTIONS
+*/
+int	add_into_stack(t_stack **stack_a, char *str, int i, int start);
+int	get_number(t_stack **stack_a, char *str, int *i, int start);
+int	get_stack(char *str, t_stack **stack_a);
+
+/*
  ** Instructions
 */
 int	swap_sa(t_stack **stack_a, t_stack **median);
@@ -47,7 +54,6 @@ int	loop_duplicate(t_stack *stack_a);
 /*
  ** Error Handler quicksort
 */
-void	error_int_stack(void);
 void	error(void);
 
 /*

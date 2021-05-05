@@ -40,7 +40,7 @@ int	copy_stack(t_stack *stack_a)
 /*
  ** Add number into stack
 */
-
+/*
 int	add_into_stack(t_stack **stack_a, char *str, int i, int start)
 {
 	ssize_t	atoi;
@@ -69,11 +69,11 @@ int	add_into_stack(t_stack **stack_a, char *str, int i, int start)
 	}
 	return (1);
 }
-
+*/
 /*
  ** Get number from the string
 */
-
+/*
 int	get_number(t_stack **stack_a, char *str, int *i, int start)
 {
 	int	result;
@@ -96,11 +96,11 @@ int	get_number(t_stack **stack_a, char *str, int *i, int start)
 	}
 	return (1);
 }
-
+*/
 /*
  ** getting the stack from argv
 */
-
+/*
 int	get_stack(char *str, t_stack **stack_a)
 {
 	int	i;
@@ -129,7 +129,7 @@ int	get_stack(char *str, t_stack **stack_a)
 	}
 	return (1);
 }
-
+*/
 /*
  ** main program push_swap
 */

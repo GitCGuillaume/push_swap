@@ -25,7 +25,7 @@ size_t	ft_len(char const *str)
 	return (i);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup_g(const char *s1)
 {
 	char	*ptr_char;
 	size_t	i;
@@ -53,7 +53,7 @@ char	*ft_strdup(const char *s1)
 	*(ptr_char + i) = '\0';
 	return (ptr_char);
 }
-
+/*
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*ptr;
@@ -81,9 +81,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	ptr[i] = '\0';
 	return (ptr);
-}
+}*/
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr_g(char const *s, unsigned int start, size_t len)
 {
 	char	*ptr;
 	size_t	i;
@@ -108,7 +108,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr[i] = '\0';
 	return (ptr);
 }
-
+/*
 char	*ft_strchr(const char *s, int c)
 {
 	char	*located_c;
@@ -128,3 +128,4 @@ char	*ft_strchr(const char *s, int c)
 		return (&located_c[i]);
 	return (0);
 }
+*/

@@ -1,38 +1,58 @@
+GLB	=	./srcs/global
+
+GNL	=	./srcs/gnl
+
 PH	=	./srcs/push_swap
+
+CHK	=	./srcs/checker
 
 INSTRUCTIONS	=	./srcs/instructions
 
 RESOLVER	=	$(PH)/resolver
 
-SRCS	=	$(INSTRUCTIONS)/swap.c $(INSTRUCTIONS)/push.c $(INSTRUCTIONS)/rotate.c $(INSTRUCTIONS)/rotate_both.c $(PH)/main.c $(PH)/quicksort.c $(PH)/loop_stack.c $(PH)/error_handler.c $(RESOLVER)/main.c
+SRCS_PH	=	$(GLB)/main.c $(INSTRUCTIONS)/swap.c $(INSTRUCTIONS)/push.c $(INSTRUCTIONS)/rotate.c $(INSTRUCTIONS)/rotate_both.c $(PH)/main.c $(PH)/quicksort.c $(GLB)/loop_stack.c $(GLB)/error_handler.c $(RESOLVER)/main.c
 
-SRCS_LIBFT	=	./libft/ft_isdigit.o ./libft/ft_atoi.o ./libft/ft_substr.o ./libft/ft_putstr_fd.o ./libft/ft_strlen.o ./libft/ft_lstnew.o ./libft/ft_lstadd_front.o ./libft/ft_lstsize.o ./libft/ft_lstlast.o ./libft/ft_lstadd_back.o ./libft/ft_lstdelone.o ./libft/ft_lstclear.o ./libft/ft_swap.o
+SRCS_CHK =	 $(GNL)/get_next_line.c $(GNL)/get_next_line_utils.c $(GLB)/main.c $(GLB)/error_handler.c $(GLB)/loop_stack.c $(INSTRUCTIONS)/swap.c $(INSTRUCTIONS)/push.c $(INSTRUCTIONS)/rotate.c $(INSTRUCTIONS)/rotate_both.c $(CHK)/main.c
+
+SRCS_LIBFT	=	./libft/ft_strncmp.o ./libft/ft_strdup.o ./libft/ft_strjoin.o ./libft/ft_strchr.o ./libft/ft_isdigit.o ./libft/ft_atoi.o ./libft/ft_substr.o ./libft/ft_putstr_fd.o ./libft/ft_strlen.o ./libft/ft_lstnew.o ./libft/ft_lstadd_front.o ./libft/ft_lstsize.o ./libft/ft_lstlast.o ./libft/ft_lstadd_back.o ./libft/ft_lstdelone.o ./libft/ft_lstclear.o ./libft/ft_swap.o ./libft/ft_split.o
 
 CLANG	=	clang -Wall -Wextra -Werror
 
 RM	=	rm -f
 
-OBJS	=	$(SRCS:.c=.o)
+OBJS_PH	=	$(SRCS_PH:.c=.o)
+
+OBJS_CHK =	$(SRCS_CHK:.c=.o)
 
 OBJS_LIBFT	=	$(SRCS_LIBFT:.c=.o)
 
 NAME_PUSH_SWAP	=	push_swap
 
-.c.o:
-	$(CLANG) -Iincludes -Ilibft -c $< -o $(<:.c=.o)
+NAME_CHECKER	=	checker
 
-$(NAME_PUSH_SWAP):	$(OBJS)
+.c.o:
+	$(CLANG) -Iincludes -Ilibft -Isrcs/gnl -c $< -o $(<:.c=.o)
+
+all:	$(NAME_CHECKER) $(NAME_PUSH_SWAP)
+
+$(NAME_CHECKER):	$(OBJS_CHK)
 			make -C libft
 			make bonus -C libft
-			$(CLANG) -Iincludes -Ilibft -o $(NAME_PUSH_SWAP) $(OBJS_LIBFT) $(OBJS)
+			$(CLANG) -Iincludes -Ilibft -Isrcs/gnl -o $(NAME_CHECKER) $(OBJS_LIBFT) $(OBJS_CHK)
 
-all:	$(NAME_PUSH_SWAP)
+$(NAME_PUSH_SWAP):	$(OBJS_PH)
+			make -C libft
+			make bonus -C libft
+			$(CLANG) -Iincludes -Ilibft -o $(NAME_PUSH_SWAP) $(OBJS_LIBFT) $(OBJS_PH)
+
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS_CHK)
+	$(RM) $(OBJS_PH)
 	$(MAKE) clean -C libft/
 
 fclean:
+	rm -f checker
 	rm -f push_swap
 	make clean
 	$(MAKE) fclean -C libft/
