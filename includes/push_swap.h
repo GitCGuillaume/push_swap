@@ -25,6 +25,8 @@ int			ft_lstsize_stack(t_stack *lst);
 /*
  ** GLOBALS FUCTIONS
 */
+
+int	list_sorted(t_stack **stack, int size);
 int	add_into_stack(t_stack **stack_a, char *str, int i, int start);
 int	get_number(t_stack **stack_a, char *str, int *i, int start);
 int	get_stack(char *str, t_stack **stack_a);

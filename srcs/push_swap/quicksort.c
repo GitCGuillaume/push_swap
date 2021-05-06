@@ -1,5 +1,5 @@
 #include "push_swap.h"
-#include <stdio.h>
+
 t_stack	*partition(t_stack **first, t_stack **last)
 {
 	t_stack	**keep_address;
@@ -50,7 +50,6 @@ t_stack	*get_median(t_stack *lst, int median)
 		if (i == median)
 			return (lst);
 		lst = lst->next;
-		//printf("lst=n %d median=%d\n", lst->number, median);
 	}
 	return (lst);
 }
@@ -65,6 +64,7 @@ t_stack	*quicksort_median(t_stack *lst)
 	t_stack	*last;
 	int	median;
 	int	size;
+	int	divide;
 
 	if (lst == NULL)
 		return (NULL);
@@ -72,20 +72,14 @@ t_stack	*quicksort_median(t_stack *lst)
 	last = ft_lstlast_stack(lst);
 	quicksort(first, last);
 	size = ft_lstsize_stack(lst);
-	median = size % 2;
-	if (size < 100)
-	{
-		if (median == 1)
-			median = (size + 1) / 2;
-		else
-			median = size / 2;
-	}
+	if (size < 70)
+		divide = 2;
 	else
-	{
-		if (median == 1)
-			median = (size + 1) / 4;
-		else
-			median = size / 4;
-	}
+		divide = 4;
+	median = size % 2;
+	if (median == 1)
+		median = (size + 1) / divide;
+	else
+		median = size / divide;
 	return (get_median(lst, median));
 }

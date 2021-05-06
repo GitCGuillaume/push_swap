@@ -14,7 +14,7 @@ SRCS_PH	=	$(GLB)/main.c $(INSTRUCTIONS)/swap.c $(INSTRUCTIONS)/push.c $(INSTRUCT
 
 SRCS_CHK =	 $(GNL)/get_next_line.c $(GNL)/get_next_line_utils.c $(GLB)/main.c $(GLB)/error_handler.c $(GLB)/loop_stack.c $(INSTRUCTIONS)/swap.c $(INSTRUCTIONS)/push.c $(INSTRUCTIONS)/rotate.c $(INSTRUCTIONS)/rotate_both.c $(CHK)/main.c
 
-SRCS_LIBFT	=	./libft/ft_strncmp.o ./libft/ft_strdup.o ./libft/ft_strjoin.o ./libft/ft_strchr.o ./libft/ft_isdigit.o ./libft/ft_atoi.o ./libft/ft_substr.o ./libft/ft_putstr_fd.o ./libft/ft_strlen.o ./libft/ft_lstnew.o ./libft/ft_lstadd_front.o ./libft/ft_lstsize.o ./libft/ft_lstlast.o ./libft/ft_lstadd_back.o ./libft/ft_lstdelone.o ./libft/ft_lstclear.o ./libft/ft_swap.o ./libft/ft_split.o
+SRCS_LIBFT	=	./libft/ft_strcmp.o ./libft/ft_strdup.o ./libft/ft_strjoin.o ./libft/ft_strchr.o ./libft/ft_isdigit.o ./libft/ft_atoi.o ./libft/ft_substr.o ./libft/ft_putstr_fd.o ./libft/ft_strlen.o ./libft/ft_lstnew.o ./libft/ft_lstadd_front.o ./libft/ft_lstsize.o ./libft/ft_lstlast.o ./libft/ft_lstadd_back.o ./libft/ft_lstdelone.o ./libft/ft_lstclear.o ./libft/ft_swap.o ./libft/ft_split.o
 
 CLANG	=	clang -Wall -Wextra -Werror
 

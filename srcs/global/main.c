@@ -1,6 +1,40 @@
 #include "push_swap.h"
 
 /*
+ ** Check if list sorted
+*/
+
+int	list_sorted(t_stack **stack, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (stack == NULL)
+		return (-1);
+	while (i < size - 1)
+	{
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (*stack != NULL)
+			{
+				if ((*stack)->next != NULL)
+				{
+					if ((*stack)->number > (*stack)->next->number)
+						return (0);
+				}
+				stack = &(*stack)->next;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+/*
  ** Add number into stack
 */
 

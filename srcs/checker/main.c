@@ -2,13 +2,18 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
+/*
+ ** ft_strlen(str_one) to get full length, because str_two will
+ ** make the compare_string ft bug
+*/
+
 int	compare_strings(char *str_one, char *str_two)
 {
 	int	result;
 	int	cmp;
 
 	result = 0;
-	cmp = ft_strncmp(str_one, str_two, ft_strlen(str_two));
+	cmp = ft_strcmp(str_one, str_two);
 	if (cmp == 0)
 		return (1);
 	else
@@ -197,6 +202,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	int	i;
 	int	get_stack_ok;
+	int	result;
 
 	i = 1;
 	get_stack_ok = 0;
@@ -234,7 +240,11 @@ int	main(int argc, char **argv)
 	while (stack_a->head != NULL)
 		stack_a = stack_a->head;
 	read_instruction(&stack_a);
-	display(stack_a);
+	result = list_sorted(&stack_a, ft_lstsize_stack(stack_a));
+	if (result == 1)
+		ft_putstr_fd("OK\n", 1);
+	else
+		ft_putstr_fd("KO\n", 2);
 	ft_lstclear_stack(&stack_a);
 	ft_lstclear_stack(&stack_b);
 	return (0);
