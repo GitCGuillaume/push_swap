@@ -21,10 +21,8 @@ int	list_sorted(t_stack **stack, int size)
 			if (*stack != NULL)
 			{
 				if ((*stack)->next != NULL)
-				{
 					if ((*stack)->number > (*stack)->next->number)
 						return (0);
-				}
 				stack = &(*stack)->next;
 			}
 			j++;
@@ -125,4 +123,14 @@ int	get_stack(char *str, t_stack **stack_a)
 		}
 	}
 	return (1);
+}
+
+void	is_stack_ok(t_stack **stack_a, int get_stack_ok)
+{
+	if (get_stack_ok == -1)
+	{
+		error();
+		ft_lstclear_stack(stack_a);
+		exit(EXIT_FAILURE);
+	}
 }

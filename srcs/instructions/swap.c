@@ -41,7 +41,6 @@ int	swap_sb(t_stack **stack_b)
 	return (1);
 }
 
-
 int	swap_ss(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 {
 	int	sa;

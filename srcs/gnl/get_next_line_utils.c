@@ -53,35 +53,6 @@ char	*ft_strdup_g(const char *s1)
 	*(ptr_char + i) = '\0';
 	return (ptr_char);
 }
-/*
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char			*ptr;
-	unsigned int	i;
-	unsigned int	j;
-
-	i = 0;
-	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	ptr = malloc((sizeof(char const *) * ft_len((char *)s1))
-			+ (sizeof(char const *) * ft_len((char *)s2)) + 1);
-	if (ptr == NULL)
-		return (NULL);
-	while (s1[i])
-	{
-		ptr[i] = (char)s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		ptr[i] = (char)s2[j];
-		i++;
-		j++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
-}*/
 
 char	*ft_substr_g(char const *s, unsigned int start, size_t len)
 {
@@ -108,24 +79,3 @@ char	*ft_substr_g(char const *s, unsigned int start, size_t len)
 	ptr[i] = '\0';
 	return (ptr);
 }
-/*
-char	*ft_strchr(const char *s, int c)
-{
-	char	*located_c;
-	int		i;
-
-	located_c = (char *)s;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (located_c[i] == c)
-		{
-			return (&located_c[i]);
-		}
-		i++;
-	}
-	if (located_c[i] == c)
-		return (&located_c[i]);
-	return (0);
-}
-*/

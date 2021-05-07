@@ -1,5 +1,5 @@
 #include "../../includes/push_swap.h"
-#include <stdio.h>
+
 int	rotate_ra(t_stack **stack_a, t_stack **median)
 {
 	if (stack_a && *stack_a != NULL)

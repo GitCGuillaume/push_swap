@@ -22,7 +22,8 @@ int	copy_stack(t_stack *stack_a)
 		return (-1);
 	while (keep_address != NULL)
 	{
-		ft_lstadd_back_stack(&lst_median, ft_lstnew_stack(keep_address->number));
+		ft_lstadd_back_stack(&lst_median,
+				ft_lstnew_stack(keep_address->number));
 		keep_address = keep_address->next;
 	}
 	if (lst_median == NULL)
@@ -35,16 +36,6 @@ int	copy_stack(t_stack *stack_a)
 	return (1);
 }
 
-void	is_stack_ok(t_stack **stack_a, int get_stack_ok)
-{
-	if (get_stack_ok == -1)
-	{
-		error();
-		ft_lstclear_stack(stack_a);
-		exit(EXIT_FAILURE);
-	}
-}
-
 /*
  ** main program push_swap
 */
@@ -52,8 +43,8 @@ void	is_stack_ok(t_stack **stack_a, int get_stack_ok)
 int	main(int argc, char **argv)
 {
 	t_stack *stack_a;
-	int	i;
-	int	get_stack_ok;
+	int		i;
+	int		get_stack_ok;
 
 	i = 1;
 	get_stack_ok = 0;
@@ -72,7 +63,6 @@ int	main(int argc, char **argv)
 	while (stack_a->head != NULL)
 		stack_a = stack_a->head;
 	resolver(&stack_a);
-//	display(stack_a);
 	ft_lstclear_stack(&stack_a);
 	return (0);
 }

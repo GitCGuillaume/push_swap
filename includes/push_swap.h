@@ -30,10 +30,12 @@ int	list_sorted(t_stack **stack, int size);
 int	add_into_stack(t_stack **stack_a, char *str, int i, int start);
 int	get_number(t_stack **stack_a, char *str, int *i, int start);
 int	get_stack(char *str, t_stack **stack_a);
+void	is_stack_ok(t_stack **stack_a, int get_stack_ok);
 
 /*
  ** Instructions
 */
+
 int	swap_sa(t_stack **stack_a, t_stack **median);
 int	swap_sb(t_stack **stack_b);
 int	swap_ss(t_stack **stack_a, t_stack **stack_b, t_stack **median);
@@ -49,7 +51,7 @@ int	rotate_rrr(t_stack **stack_a, t_stack **stack_b, t_stack **median);
 /*
  ** Loop stack
 */
-void	display(t_stack *stack);
+
 int	check_duplicate(t_stack *stack);
 int	loop_duplicate(t_stack *stack_a);
 
@@ -70,5 +72,42 @@ t_stack	*quicksort_median(t_stack *lst);
 */
 
 int	resolver(t_stack **stack_a);
+
+/*
+ ** Resolver tools
+ */
+
+int	rotation_move(t_stack **stack, int value);
+t_stack	*get_biggest(t_stack **stack);
+int	get_smallest_median(t_stack **stack, int median);
+t_stack	*get_median_location(t_stack **stack);
+int	median_smallest(t_stack **stack, int median);
+void	clear_stack_b(t_stack **stack_a, t_stack **stack_b);
+void	must_push_pb(t_stack **stack_a, t_stack **stack_b);
+void	rotate_stack(t_stack **stack_a, t_stack **stack_b,
+		t_stack **median, char *str);
+/*
+ ** Check_entries
+*/
+
+int	check_entry_a(char *split);
+int	check_entry_b(char *split);
+int	check_entry_both(char *split);
+int	check_entries(t_stack **stack_a, char **split);
+int	check_instruction(t_stack **stack_a, char *str);
+
+/* Checker tools
+ **
+*/
+
+int	compare_strings(char *str_one, char *str_two);
+void	free_array(char **ptr);
+void	read_parameters(int argc, char **argv, t_stack **stack_a);
+
+/*
+ ** Executes check
+*/
+
+int	execute_instruction(t_stack **stack_a, char **split);
 
 #endif

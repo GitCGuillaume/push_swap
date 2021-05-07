@@ -62,9 +62,9 @@ t_stack	*quicksort_median(t_stack *lst)
 {
 	t_stack	*first;
 	t_stack	*last;
-	int	median;
-	int	size;
-	int	divide;
+	int		median;
+	int		size;
+	int		divide;
 
 	if (lst == NULL)
 		return (NULL);

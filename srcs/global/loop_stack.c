@@ -1,27 +1,12 @@
 #include "push_swap.h"
-#include <stdio.h>
-
-void	display(t_stack *stack)
-{
-		printf("\n--------------\n");
-	while (stack != NULL)
-	{
-		printf("number=%d\n", stack->number);
-		//printf("current=%p", stack);
-	//	printf("number head=%p", stack->head);
-	//	printf("number next=%p", stack->next);
-		//printf("position=%zu\n", stack->position);
-		printf("is_median=%d\n", stack->is_median);
-		stack = stack->next;
-	}
-}
 
 /*
  * * Check duplicate values
 */
+
 int	check_duplicate(t_stack *stack)
 {
-	int	value;
+	int		value;
 	size_t	position;
 
 	value = stack->number;

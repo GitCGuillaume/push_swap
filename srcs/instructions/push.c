@@ -1,5 +1,15 @@
 #include "../../includes/push_swap.h"
 
+void	goto_head(t_stack **stack_a, t_stack **stack_b)
+{
+	if (*stack_a)
+		while ((*stack_a)->head != NULL)
+			*stack_a = (*stack_a)->head;
+	if (*stack_b)
+		while ((*stack_b)->head != NULL)
+			*stack_b = (*stack_b)->head;
+}
+
 int	push_pa(t_stack **stack_a, t_stack **stack_b)
 {
 	ssize_t	atoi;
@@ -7,16 +17,7 @@ int	push_pa(t_stack **stack_a, t_stack **stack_b)
 
 	if (stack_b == NULL || *stack_b == NULL || stack_a == NULL)
 		return (-1);
-	if (*stack_a)
-	{
-		while ((*stack_a)->head != NULL)
-			*stack_a = (*stack_a)->head;
-	}
-	if (*stack_b)
-	{
-		while ((*stack_b)->head != NULL)
-			*stack_b = (*stack_b)->head;
-	}
+	goto_head(stack_a, stack_b);
 	atoi = (*stack_b)->number;
 	ft_lstadd_front_stack(stack_a, ft_lstnew_stack((int)atoi));
 	if ((*stack_b)->next != NULL)
@@ -43,16 +44,7 @@ int	push_pb(t_stack **stack_a, t_stack **stack_b)
 
 	if (stack_a == NULL || *stack_a == NULL || stack_b == NULL)
 		return (-1);
-	if (*stack_a)
-	{
-		while ((*stack_a)->head != NULL)
-			*stack_a = (*stack_a)->head;
-	}
-	if (*stack_b)
-	{
-		while ((*stack_b)->head != NULL)
-			*stack_b = (*stack_b)->head;
-	}
+	goto_head(stack_a, stack_b);
 	atoi = (*stack_a)->number;
 	ft_lstadd_front_stack(stack_b, ft_lstnew_stack((int)atoi));
 	if ((*stack_a)->next != NULL)
