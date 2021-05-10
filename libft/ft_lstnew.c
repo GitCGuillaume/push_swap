@@ -17,7 +17,8 @@ t_stack	*ft_lstnew_stack(ssize_t content)
 {
 	t_stack	*t_lst;
 
-	if (!(t_lst = malloc(sizeof(t_stack))))
+	t_lst = malloc(sizeof(t_stack));
+	if (t_lst == NULL)
 		return (NULL);
 	t_lst->position = 1;
 	t_lst->is_median = 0;
@@ -31,7 +32,8 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*t_lst;
 
-	if (!(t_lst = malloc(sizeof(t_list))))
+	t_lst = malloc(sizeof(t_list));
+	if (t_lst == NULL)
 		return (NULL);
 	t_lst->content = content;
 	return (t_lst);

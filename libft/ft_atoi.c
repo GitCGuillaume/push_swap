@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		is_tab(char c)
+static int	is_tab(char c)
 {
 	if (c == '\t' || c == '\v')
 		return (1);
@@ -20,7 +20,7 @@ static int		is_tab(char c)
 		return (0);
 }
 
-static int		is_jump(char c)
+static int	is_jump(char c)
 {
 	if (c == '\n' || c == '\r')
 		return (1);
@@ -28,7 +28,7 @@ static int		is_jump(char c)
 		return (0);
 }
 
-static int		is_other(char c)
+static int	is_other(char c)
 {
 	if (c == '\f' || c == ' ')
 		return (1);
@@ -36,7 +36,7 @@ static int		is_other(char c)
 		return (0);
 }
 
-ssize_t				ft_atoi(const char *str)
+ssize_t	ft_atoi(const char *str)
 {
 	ssize_t	i;
 	ssize_t	result;

@@ -27,7 +27,7 @@ char	*ft_strnstr(const char *string, const char *needle, size_t len)
 		if (string[i] == needle[j])
 		{
 			while (needle[j] == string[i + j]
-					&& needle[j] != '\0' && len > i + j)
+				&& needle[j] != '\0' && len > i + j)
 			{
 				if (needle[j + 1] == '\0')
 					return ((char *)&string[i]);

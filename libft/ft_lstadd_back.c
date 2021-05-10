@@ -15,7 +15,7 @@
 
 void	ft_lstadd_back_stack(t_stack **alst, t_stack *new)
 {
-	t_stack *t_lst;
+	t_stack	*t_lst;
 
 	if (new)
 	{
@@ -36,7 +36,7 @@ void	ft_lstadd_back_stack(t_stack **alst, t_stack *new)
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list *t_lst;
+	t_list	*t_lst;
 
 	if (new)
 	{

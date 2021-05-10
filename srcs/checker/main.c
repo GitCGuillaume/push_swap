@@ -32,7 +32,7 @@ int	read_instruction(t_stack **stack_a)
 
 int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
+	t_stack	*stack_a;
 	int		get_stack_ok;
 	int		result;
 

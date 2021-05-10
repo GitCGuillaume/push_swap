@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static size_t		count_word(char const *s, char c)
+static size_t	count_word(char const *s, char c)
 {
 	size_t	i;
 	size_t	nb_word;
@@ -35,7 +35,7 @@ static size_t		count_word(char const *s, char c)
 	return (nb_word);
 }
 
-static void			*ft_free(char **ptr, size_t size)
+static void	*ft_free(char **ptr, size_t size)
 {
 	size++;
 	while (size != 0)
@@ -47,7 +47,7 @@ static void			*ft_free(char **ptr, size_t size)
 	return (NULL);
 }
 
-static	char		*crea_arr(char const *s, char c, char *ptr, size_t *i)
+static	char	*crea_arr(char const *s, char c, char *ptr, size_t *i)
 {
 	unsigned int	start;
 	size_t			end;
@@ -71,7 +71,7 @@ static	char		*crea_arr(char const *s, char c, char *ptr, size_t *i)
 	return (ptr = ft_substr(s, start, (end - start)));
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char			**ptr;
 	size_t			nb_word;
@@ -83,13 +83,15 @@ char				**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	nb_word = count_word(s, c);
-	if (!(ptr = malloc(sizeof(char const *) * (nb_word + 1))))
+	ptr = malloc(sizeof(char const *) * (nb_word + 1));
+	if (ptr == NULL)
 		return (NULL);
 	while (s[i] != '\0' && s[i] == c)
 		i++;
 	while (nb_word > j)
 	{
-		if (!(ptr[j] = crea_arr(s, c, ptr[j], &i)))
+		ptr[j] = crea_arr(s, c, ptr[j], &i);
+		if (ptr[j] == NULL)
 			return (ft_free(ptr, j));
 		j++;
 	}

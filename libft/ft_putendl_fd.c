@@ -14,7 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	char jump;
+	char	jump;
 
 	jump = '\n';
 	if (!s)

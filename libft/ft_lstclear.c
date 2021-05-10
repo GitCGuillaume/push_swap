@@ -14,7 +14,7 @@
 
 void	ft_lstclear_stack(t_stack **lst)
 {
-	t_stack *keep_addresses;
+	t_stack	*keep_addresses;
 
 	if (!lst || !*lst)
 		return ;
@@ -32,7 +32,7 @@ void	ft_lstclear_stack(t_stack **lst)
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *keep_addresses;
+	t_list	*keep_addresses;
 
 	if (!lst || !*lst)
 		return ;

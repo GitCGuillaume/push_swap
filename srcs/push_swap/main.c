@@ -12,7 +12,7 @@ void	seek_median(t_stack **stack_a, int median)
 
 int	copy_stack(t_stack *stack_a)
 {
-	t_stack *lst_median;
+	t_stack	*lst_median;
 	t_stack	*keep_address;
 	t_stack	*median;
 
@@ -23,7 +23,7 @@ int	copy_stack(t_stack *stack_a)
 	while (keep_address != NULL)
 	{
 		ft_lstadd_back_stack(&lst_median,
-				ft_lstnew_stack(keep_address->number));
+			ft_lstnew_stack(keep_address->number));
 		keep_address = keep_address->next;
 	}
 	if (lst_median == NULL)
@@ -42,7 +42,7 @@ int	copy_stack(t_stack *stack_a)
 
 int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
+	t_stack	*stack_a;
 	int		i;
 	int		get_stack_ok;
 

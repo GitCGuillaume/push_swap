@@ -7,8 +7,8 @@ void	stack_a_order(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 		if ((*stack_a)->next != NULL)
 		{
 			if (stack_b && *stack_b && (*stack_b)->next
-					&& (*stack_a)->number > (*stack_a)->next->number
-					&& (*stack_b)->number < (*stack_b)->next->number)
+				&& (*stack_a)->number > (*stack_a)->next->number
+				&& (*stack_b)->number < (*stack_b)->next->number)
 			{
 				swap_ss(stack_a, stack_b, median);
 				ft_putstr_fd("ss\n", 1);
@@ -116,7 +116,7 @@ void	sort_median(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 int	resolver(t_stack **stack_a)
 {
 	int		result;
-	t_stack *stack_b;
+	t_stack	*stack_b;
 	t_stack	*median;
 
 	stack_b = NULL;
