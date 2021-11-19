@@ -4,7 +4,7 @@ GNL	=	./srcs/gnl
 
 PH	=	./srcs/push_swap
 
-CHK	=	./srcs/checker
+CHK	=	./checker_bonus
 
 INSTRUCTIONS	=	./srcs/instructions
 
@@ -12,7 +12,7 @@ RESOLVER	=	$(PH)/resolver
 
 SRCS_PH	=	$(GLB)/main.c $(INSTRUCTIONS)/swap.c $(INSTRUCTIONS)/push.c $(INSTRUCTIONS)/rotate.c $(INSTRUCTIONS)/rotate_both.c $(PH)/main.c $(PH)/quicksort.c $(GLB)/loop_stack.c $(GLB)/error_handler.c $(RESOLVER)/tools.c $(RESOLVER)/tools_two.c $(RESOLVER)/main.c
 
-SRCS_CHK =	 $(GNL)/get_next_line.c $(GNL)/get_next_line_utils.c $(GLB)/main.c $(GLB)/error_handler.c $(GLB)/loop_stack.c $(INSTRUCTIONS)/swap.c $(INSTRUCTIONS)/push.c $(INSTRUCTIONS)/rotate.c $(INSTRUCTIONS)/rotate_both.c $(CHK)/tools.c $(CHK)/check.c $(CHK)/execute.c $(CHK)/main.c
+SRCS_CHK =	 $(GNL)/get_next_line.c $(GNL)/get_next_line_utils.c $(GLB)/main.c $(GLB)/error_handler.c $(GLB)/loop_stack.c $(INSTRUCTIONS)/swap.c $(INSTRUCTIONS)/push.c $(INSTRUCTIONS)/rotate.c $(INSTRUCTIONS)/rotate_both.c $(CHK)/tools_bonus.c $(CHK)/check_bonus.c $(CHK)/execute_bonus.c $(CHK)/main_bonus.c
 
 SRCS_LIBFT	=	./libft/ft_strcmp.o ./libft/ft_strdup.o ./libft/ft_strjoin.o ./libft/ft_strchr.o ./libft/ft_isdigit.o ./libft/ft_atoi.o ./libft/ft_substr.o ./libft/ft_putstr_fd.o ./libft/ft_strlen.o ./libft/ft_lstnew.o ./libft/ft_lstadd_front.o ./libft/ft_lstsize.o ./libft/ft_lstlast.o ./libft/ft_lstadd_back.o ./libft/ft_lstdelone.o ./libft/ft_lstclear.o ./libft/ft_swap.o ./libft/ft_split.o
 
@@ -33,7 +33,7 @@ NAME_CHECKER	=	checker
 .c.o:
 	$(CLANG) -Iincludes -Ilibft -Isrcs/gnl -c $< -o $(<:.c=.o)
 
-all:	$(NAME_CHECKER) $(NAME_PUSH_SWAP)
+all:	$(NAME_PUSH_SWAP)
 
 $(NAME_CHECKER):	$(OBJS_CHK)
 			make -C libft
@@ -57,6 +57,10 @@ fclean:
 	make clean
 	$(MAKE) fclean -C libft/
 
-re:	fclean all
+bonus: $(NAME_PUSH_SWAP) $(NAME_CHECKER)
+
+re:
+	make fclean
+	make all
 
 .PHONY:	all clean fclean re
