@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:01:16 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 20:03:03 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 21:19:46 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ int	get_number(t_stack **stack_a, char *str, int *i, const int start)
 			return (-1);
 		while (str[*i] && str[*i] == ' ')
 			(*i)++;
-		//if (str[*i] != '\0' && str[*i] != ' ')
-		//	return (-1);
 	}
 	return (1);
 }

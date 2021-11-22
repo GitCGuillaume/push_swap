@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:11 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:03:12 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 21:18:24 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ t_stack	*quicksort_median(t_stack *lst)
 	last = ft_lstlast_stack(lst);
 	quicksort(first, last);
 	size = ft_lstsize_stack(lst);
-	if (size < 70)
+	if (size < 250)
 		divide = 2;
 	else
-		divide = 4;
-	median = size % 2;
+		divide = 5;
+	median = size % 20;
 	if (median == 1)
 		median = (size + 1) / divide;
 	else
