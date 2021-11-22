@@ -1,6 +1,6 @@
 GLB	=	./srcs/global
 
-GNL	=	./srcs/gnl
+GNL	=	./checker_bonus/gnl
 
 PH	=	./srcs/push_swap
 
@@ -31,20 +31,19 @@ NAME_PUSH_SWAP	=	push_swap
 NAME_CHECKER	=	checker
 
 .c.o:
-	$(CLANG) -Iincludes -Ilibft -Isrcs/gnl -c $< -o $(<:.c=.o)
+	$(CLANG) -Iincludes -Ilibft -c $< -o $(<:.c=.o)
 
 all:	$(NAME_PUSH_SWAP)
 
 $(NAME_CHECKER):	$(OBJS_CHK)
 			make -C libft
 			make bonus -C libft
-			$(CLANG) -Iincludes -Ilibft -Isrcs/gnl -o $(NAME_CHECKER) $(OBJS_LIBFT) $(OBJS_CHK)
+			$(CLANG) -Iincludes -Ilibft -Ichecker_bonus/gnl -o $(NAME_CHECKER) $(OBJS_LIBFT) $(OBJS_CHK)
 
 $(NAME_PUSH_SWAP):	$(OBJS_PH)
 			make -C libft
 			make bonus -C libft
 			$(CLANG) -Iincludes -Ilibft -o $(NAME_PUSH_SWAP) $(OBJS_LIBFT) $(OBJS_PH)
-
 
 clean:
 	$(RM) $(OBJS_CHK)

@@ -6,12 +6,12 @@
 /*   By: gchopin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:44:57 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 10:01:23 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 12:08:41 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "get_next_line.h"
+#include "gnl/get_next_line.h"
 #include "push_swap_bonus.h"
 
 int	read_instruction(t_stack **stack_a)
