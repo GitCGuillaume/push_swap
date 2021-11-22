@@ -6,19 +6,11 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:52 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 11:41:08 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 13:32:46 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*void	clear_stack(t_stack **stack_a, t_stack **stack_b)
-{
-	error();
-	ft_lstclear_stack(stack_a);
-	ft_lstclear_stack(stack_b);
-	exit(EXIT_FAILURE);
-}*/
 
 void	must_push_pb(t_stack **stack_a, t_stack **stack_b)
 {

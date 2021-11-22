@@ -48,13 +48,13 @@ $(NAME_PUSH_SWAP):	$(OBJS_PH)
 clean:
 	$(RM) $(OBJS_CHK)
 	$(RM) $(OBJS_PH)
-	$(MAKE) clean -C libft/
+	make clean -C libft/
 
 fclean:
 	rm -f checker
 	rm -f push_swap
 	make clean
-	$(MAKE) fclean -C libft/
+	make fclean -C libft/
 
 bonus: $(NAME_PUSH_SWAP) $(NAME_CHECKER)
 

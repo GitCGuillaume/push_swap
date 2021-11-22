@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:06 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 11:36:08 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 15:02:23 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	main(int argc, char **argv)
 		i++;
 		is_stack_ok(&stack_a, get_stack_ok);
 	}
+	if (stack_a == NULL)
+		return (0);
 	is_stack_ok(&stack_a, get_stack_ok);
 	get_stack_ok = loop_duplicate(stack_a);
 	is_stack_ok(&stack_a, get_stack_ok);
