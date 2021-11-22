@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_stack.c                                       :+:      :+:    :+:   */
+/*   duplicate_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:01:10 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:01:11 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 10:22:59 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	loop_duplicate(t_stack *stack_a)
 	int	get_stack_ok;
 
 	get_stack_ok = 0;
+	if (stack_a == NULL)
+		return (-1);
 	while (stack_a != NULL)
 	{
 		get_stack_ok = check_duplicate(stack_a);

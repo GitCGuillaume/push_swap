@@ -6,11 +6,12 @@
 /*   By: gchopin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:45:06 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/05 14:45:08 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 09:14:12 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "push_swap_bonus.h"
 
 /*
  ** ft_strlen(str_one) to get full length, because str_two will

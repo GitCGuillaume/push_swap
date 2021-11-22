@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:01:16 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:01:17 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 10:34:20 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,23 @@ int	add_into_stack(t_stack **stack_a, char *str, int i, int start)
 
 	atoi = 0;
 	ptr = NULL;
-	if (str)
+	if (str == NULL || stack_a == NULL)
+		return (-1);
+	if (ft_isdigit(str[i]) == 0)
 	{
-		if (ft_isdigit(str[i]) == 0)
-		{
-			ptr = ft_substr(str, start, i - start);
-			if (ptr == NULL)
-				return (-1);
-			atoi = ft_atoi(ptr);
-			if (ptr != NULL)
-				free(ptr);
-			if (atoi < -2147483648 || atoi > 2147483647)
-				return (-1);
-			if (*stack_a != NULL)
-				ft_lstadd_back_stack(stack_a, ft_lstnew_stack((int)atoi));
-			else
-				ft_lstadd_front_stack(stack_a, ft_lstnew_stack((int)atoi));
-			start = 0;
-		}
+		ptr = ft_substr(str, start, i - start);
+		if (ptr == NULL)
+			return (-1);
+		atoi = ft_atoi(ptr);
+		if (ptr != NULL)
+			free(ptr);
+		if (atoi < -2147483648 || atoi > 2147483647)
+			return (-1);
+		if (*stack_a != NULL)
+			ft_lstadd_back_stack(stack_a, ft_lstnew_stack((int)atoi));
+		else
+			ft_lstadd_front_stack(stack_a, ft_lstnew_stack((int)atoi));
+		start = 0;
 	}
 	return (1);
 }
@@ -81,11 +80,13 @@ int	add_into_stack(t_stack **stack_a, char *str, int i, int start)
  ** Get number from the string
 */
 
-int	get_number(t_stack **stack_a, char *str, int *i, int start)
+int	get_number(t_stack **stack_a, char *str, int *i, const int start)
 {
 	int	result;
 
 	result = 0;
+	if (str == NULL || stack_a == NULL)
+		return (-1);
 	if (str)
 	{
 		if (str[*i] == '-')
@@ -111,12 +112,12 @@ int	get_number(t_stack **stack_a, char *str, int *i, int start)
 int	get_stack(char *str, t_stack **stack_a)
 {
 	int	i;
-	int	start;
 	int	result;
 
 	i = 0;
-	start = 0;
 	result = 0;
+	if (str == NULL || stack_a == NULL)
+		return (-1);
 	if (str)
 	{
 		while (str[i])
@@ -127,8 +128,7 @@ int	get_stack(char *str, t_stack **stack_a)
 				return (-1);
 			else
 			{
-				start = i;
-				result = get_number(stack_a, str, &i, start);
+				result = get_number(stack_a, str, &i, i);
 				if (result == -1)
 					return (-1);
 			}
@@ -142,7 +142,8 @@ void	is_stack_ok(t_stack **stack_a, int get_stack_ok)
 	if (get_stack_ok == -1)
 	{
 		error();
-		ft_lstclear_stack(stack_a);
+		if (stack_a)
+			ft_lstclear_stack(stack_a);
 		exit(EXIT_FAILURE);
 	}
 }

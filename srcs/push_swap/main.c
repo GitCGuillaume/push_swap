@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:06 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:03:07 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 10:48:32 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	seek_median(t_stack **stack_a, int median)
 {
+	if (stack_a == NULL)
+		return ;
 	while (*stack_a)
 	{
 		if ((*stack_a)->number == median)
@@ -43,8 +45,8 @@ int	copy_stack(t_stack *stack_a)
 	median = quicksort_median(lst_median);
 	if (median == NULL)
 		return (-1);
-	ft_lstclear_stack(&lst_median);
 	seek_median(&stack_a, median->number);
+	ft_lstclear_stack(&lst_median);
 	return (1);
 }
 
@@ -74,6 +76,8 @@ int	main(int argc, char **argv)
 	is_stack_ok(&stack_a, get_stack_ok);
 	while (stack_a->head != NULL)
 		stack_a = stack_a->head;
+	if (stack_a == NULL)
+		is_stack_ok(NULL, -1);
 	resolver(&stack_a);
 	ft_lstclear_stack(&stack_a);
 	return (0);

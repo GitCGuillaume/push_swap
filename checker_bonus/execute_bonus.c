@@ -6,17 +6,18 @@
 /*   By: gchopin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:44:46 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/05 14:44:47 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 09:24:15 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "push_swap_bonus.h"
 
 /*
  ** execute x_a stack
 */
 
-void	execute_a(t_stack **stack_a, t_stack **stack_b, char *str)
+static void	execute_a(t_stack **stack_a, t_stack **stack_b, char *str)
 {
 	int	result;
 
@@ -38,7 +39,7 @@ void	execute_a(t_stack **stack_a, t_stack **stack_b, char *str)
  ** execute x_b stack
 */
 
-void	execute_b(t_stack **stack_a, t_stack **stack_b, char *str)
+static void	execute_b(t_stack **stack_a, t_stack **stack_b, char *str)
 {
 	int	result;
 
@@ -56,7 +57,7 @@ void	execute_b(t_stack **stack_a, t_stack **stack_b, char *str)
 		rotate_rrb(stack_b);
 }
 
-void	execute_both(t_stack **stack_a, t_stack **stack_b, char *str)
+static void	execute_both(t_stack **stack_a, t_stack **stack_b, char *str)
 {
 	int	result;
 

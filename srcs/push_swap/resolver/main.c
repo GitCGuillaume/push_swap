@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:20 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:03:21 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 10:46:01 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int	resolver(t_stack **stack_a)
 	{
 		result = list_sorted(stack_a, ft_lstsize_stack(*stack_a));
 		if (result == 1)
-			exit(0);
+			return (0);
 		sort_median(stack_a, &stack_b, &median);
 		result = list_sorted(stack_a, ft_lstsize_stack(*stack_a));
 		while (result == 0)
