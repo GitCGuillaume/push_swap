@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:02:08 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:02:09 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 11:27:16 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	rotate_ra(t_stack **stack_a, t_stack **median)
 {
-	if (stack_a && *stack_a != NULL)
+	if (stack_a && *stack_a)
 	{
 		while ((*stack_a)->head != NULL)
 			stack_a = &(*stack_a)->head;

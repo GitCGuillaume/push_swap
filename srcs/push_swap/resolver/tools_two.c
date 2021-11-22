@@ -6,31 +6,34 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:52 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:03:53 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 11:41:08 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	clear_stack_b(t_stack **stack_a, t_stack **stack_b)
+/*void	clear_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	error();
 	ft_lstclear_stack(stack_a);
 	ft_lstclear_stack(stack_b);
 	exit(EXIT_FAILURE);
-}
+}*/
 
 void	must_push_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*median;
 
-	ft_putstr_fd("pb\n", 1);
-	push_pb(stack_a, stack_b);
+	if (stack_a && stack_b)
+	{
+		ft_putstr_fd("pb\n", 1);
+		push_pb(stack_a, stack_b);
+	}
 	if (copy_stack(*stack_b) == -1)
-		clear_stack_b(stack_a, stack_b);
+		error_stack(stack_a, stack_b, -1);
 	median = get_median_location(stack_b);
 	if (median == NULL)
-		clear_stack_b(stack_a, stack_b);
+		error_stack(stack_a, stack_b, -1);
 	if ((*stack_b)->next)
 	{
 		if (median->number > (*stack_b)->number)

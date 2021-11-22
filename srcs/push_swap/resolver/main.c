@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:20 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 10:46:01 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/22 11:42:06 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,24 +96,20 @@ void	sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	sort_median(t_stack **stack_a, t_stack **stack_b, t_stack **median)
+void	sort_median(t_stack **stack_a, t_stack **stack_b, t_stack **median,
+	int size)
 {
-	int	size;
 	int	result;
 
-	size = ft_lstsize_stack(*stack_a);
-	while (size > 3)
+	if (median == NULL)
+		error_stack(stack_a, stack_b, -1);
+	while (size > 3 && median)
 	{
 		if (*median != NULL)
 			(*median)->is_median = 0;
 		result = copy_stack(*stack_a);
 		if (result == -1)
-		{
-			error();
-			ft_lstclear_stack(stack_a);
-			ft_lstclear_stack(stack_b);
-			exit(EXIT_FAILURE);
-		}
+			error_stack(stack_a, stack_b, result);
 		*median = get_median_location(stack_a);
 		result = median_smallest(stack_a, (*median)->number);
 		while (result == 0)
@@ -138,7 +134,7 @@ int	resolver(t_stack **stack_a)
 		result = list_sorted(stack_a, ft_lstsize_stack(*stack_a));
 		if (result == 1)
 			return (0);
-		sort_median(stack_a, &stack_b, &median);
+		sort_median(stack_a, &stack_b, &median, ft_lstsize_stack(*stack_a));
 		result = list_sorted(stack_a, ft_lstsize_stack(*stack_a));
 		while (result == 0)
 		{
