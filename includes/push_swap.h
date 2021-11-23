@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:59:12 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 11:39:13 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/23 17:07:33 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ int		resolver(t_stack **stack_a);
 
 int		rotation_move(t_stack **stack, int value);
 t_stack	*get_biggest(t_stack **stack);
-int		get_smallest_median(t_stack **stack, int median);
+int		get_smaller_value(t_stack **stack, int median);
 t_stack	*get_median_location(t_stack **stack);
 int		median_smallest(t_stack **stack, int median);
-//void	clear_stack_b(t_stack **stack_a, t_stack **stack_b);
 void	must_push_pb(t_stack **stack_a, t_stack **stack_b);
 void	rotate_stack(t_stack **stack_a, t_stack **stack_b,
 			t_stack **median, char *str);
+
 #endif

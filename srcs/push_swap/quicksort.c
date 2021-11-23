@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:11 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 21:18:24 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/23 17:06:10 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,24 @@ t_stack	*partition(t_stack **first, t_stack **last)
 	t_stack	**keep_address;
 	t_stack	**pivot;
 
-	ft_swap(&(*first)->number, &(*last)->number);
-	keep_address = first;
-	while ((*first)->next != NULL && ((*last)->position > (*first)->position))
+	keep_address = NULL;
+	pivot = NULL;
+	if (first && last)
 	{
-		if ((*last)->number > (*first)->number)
+		ft_swap(&(*first)->number, &(*last)->number);
+		keep_address = first;
+		while ((*first)->next != NULL && ((*last)->position > (*first)->position))
 		{
-			ft_swap(&(*first)->number, &(*keep_address)->number);
-			keep_address = &(*keep_address)->next;
+			if ((*last)->number > (*first)->number)
+			{
+				ft_swap(&(*first)->number, &(*keep_address)->number);
+				keep_address = &(*keep_address)->next;
+			}
+			first = &(*first)->next;
 		}
-		first = &(*first)->next;
+		ft_swap(&(*last)->number, &(*keep_address)->number);
+		pivot = keep_address;
 	}
-	ft_swap(&(*last)->number, &(*keep_address)->number);
-	pivot = keep_address;
 	return (*pivot);
 }
 
@@ -37,13 +42,17 @@ void	quicksort(t_stack *first, t_stack *last)
 {
 	t_stack	*pivot;
 
-	if (last->position > first->position)
+	pivot = NULL;
+	if (first && last)
 	{
-		pivot = partition(&first, &last);
-		if (pivot->head != NULL)
-			quicksort(first, pivot->head);
-		if (pivot->next != NULL)
-			quicksort(pivot->next, last);
+		if (last->position > first->position)
+		{
+			pivot = partition(&first, &last);
+			if (pivot->head != NULL)
+				quicksort(first, pivot->head);
+			if (pivot->next != NULL)
+				quicksort(pivot->next, last);
+		}
 	}
 }
 
@@ -53,15 +62,27 @@ void	quicksort(t_stack *first, t_stack *last)
 
 t_stack	*get_median(t_stack *lst, int median)
 {
+	//t_stack *biggest;
 	int	i;
 
 	i = 0;
-	while (lst != NULL)
+	//biggest = NULL;
+	if (lst)
 	{
-		i++;
-		if (i == median)
-			return (lst);
-		lst = lst->next;
+		//biggest = get_biggest(&lst);
+		while (lst != NULL)
+		{
+			i++;
+			/*if (i == median && lst->number != biggest->number)
+				return (lst);
+			else if (i == median && lst->number == biggest->number
+				&& lst->next != NULL)
+				return (lst->next);
+			else */
+			if (i == median)
+				return (lst);
+			lst = lst->next;
+		}
 	}
 	return (lst);
 }
@@ -74,9 +95,8 @@ t_stack	*quicksort_median(t_stack *lst)
 {
 	t_stack	*first;
 	t_stack	*last;
-	int		median;
 	int		size;
-	int		divide;
+	int		median;
 
 	if (lst == NULL)
 		return (NULL);
@@ -84,14 +104,16 @@ t_stack	*quicksort_median(t_stack *lst)
 	last = ft_lstlast_stack(lst);
 	quicksort(first, last);
 	size = ft_lstsize_stack(lst);
-	if (size < 250)
-		divide = 2;
+	median = 0;
+	if (size <= 100)
+	{
+		if (size % 2 == 1)
+			size++;
+		median = size / 2;
+	}
 	else
-		divide = 5;
-	median = size % 20;
-	if (median == 1)
-		median = (size + 1) / divide;
-	else
-		median = size / divide;
+	{
+		median = size / 6;
+	}
 	return (get_median(lst, median));
 }

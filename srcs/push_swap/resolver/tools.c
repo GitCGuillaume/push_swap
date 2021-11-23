@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:36 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 10:59:10 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/23 16:21:22 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_stack	*get_biggest(t_stack **stack)
 	return (biggest);
 }
 
-int	get_smallest_median(t_stack **stack, int median)
+int	get_smaller_value(t_stack **stack, int value)
 {
 	int	size;
 
@@ -57,7 +57,7 @@ int	get_smallest_median(t_stack **stack, int median)
 	{
 		while (*stack != NULL)
 		{
-			if (median > (*stack)->number)
+			if (value > (*stack)->number)
 				return (size);
 			size++;
 			stack = &(*stack)->next;

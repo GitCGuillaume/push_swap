@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:20 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 21:03:40 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/23 17:32:22 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ void	stack_a_order(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 
 void	sort_stack_a(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 {
+	//t_stack	*biggest;
 	int	max;
 	int	size;
 
-	size = get_smallest_median(stack_a, (*median)->number);
+	//biggest = NULL;
+	//if (stack_a && *stack_a)
+	//	biggest = get_biggest(stack_a);
+	size = get_smaller_value(stack_a, (*median)->number);
 	size--;
 	max = ft_lstsize_stack(*stack_a);
 	if (stack_a && *stack_a)
@@ -63,7 +67,7 @@ void	sort_stack_a(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 				size++;
 			}
 		}
-		if (size == -1)
+		if (size == -1) //&& biggest->number != (*stack_a)->number)
 			must_push_pb(stack_a, stack_b);
 	}
 }
@@ -101,9 +105,10 @@ void	sort_median(t_stack **stack_a, t_stack **stack_b, t_stack **median,
 {
 	int	result;
 
+	result = 0;
 	if (median == NULL)
 		error_stack(stack_a, stack_b, -1);
-	while (size > 3 && median)
+	while (size > 3 && median && result == 0)
 	{
 		if (*median != NULL)
 			(*median)->is_median = 0;
@@ -118,6 +123,7 @@ void	sort_median(t_stack **stack_a, t_stack **stack_b, t_stack **median,
 			result = median_smallest(stack_a, (*median)->number);
 		}
 		size = ft_lstsize_stack(*stack_a);
+		result = list_sorted(stack_a, ft_lstsize_stack(*stack_a));
 	}
 }
 
