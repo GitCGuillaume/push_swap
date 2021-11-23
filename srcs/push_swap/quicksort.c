@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:11 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/23 17:06:10 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/23 18:23:26 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,5 @@ t_stack	*quicksort_median(t_stack *lst)
 	{
 		median = size / 6;
 	}
-	return (get_median(lst, median));
+	return (get_median(first, median));
 }

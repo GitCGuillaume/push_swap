@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:20 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/23 17:32:22 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/23 18:33:26 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ void	sort_stack_a(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 			}
 		}
 		if (size == -1) //&& biggest->number != (*stack_a)->number)
+		{
 			must_push_pb(stack_a, stack_b);
+		}
 	}
 }
 
