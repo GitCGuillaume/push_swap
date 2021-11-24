@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:59:12 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/23 17:07:33 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/24 17:37:17 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	ft_lstdelone_stack(t_stack *lst);
 void	ft_lstclear_stack(t_stack **lst);
 t_stack	*ft_lstlast_stack(t_stack *lst);
 int		ft_lstsize_stack(t_stack *lst);
+
+/*
+ ** MAIN
+*/
+
+void	seek_median(t_stack **stack_a, int median);
 
 /*
  ** GLOBALS FUCTIONS
@@ -78,8 +84,8 @@ void	error_stack(t_stack **stack_a, t_stack **stack_b, int result);
  ** Quicksort
 */
 
-int		copy_stack(t_stack *stack_a);
-t_stack	*quicksort_median(t_stack *lst);
+int		copy_stack(t_stack *stack_a, int is_b);
+t_stack	*quicksort_median(t_stack *lst, int is_b);
 
 /*
  ** Resolver push_swap
