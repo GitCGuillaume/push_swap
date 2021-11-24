@@ -51,8 +51,8 @@ clean:
 	make clean -C libft/
 
 fclean:
-	rm -f checker
-	rm -f push_swap
+	rm -f $(NAME_CHECKER)
+	rm -f $(NAME_PUSH_SWAP)
 	make clean
 	make fclean -C libft/
 
