@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:36 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/23 16:21:22 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/24 17:37:56 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,20 @@ int	get_smaller_value(t_stack **stack, int value)
 	return (size);
 }
 
+/*
+ ** Return a double ptr,
+ ** need to update the median value to 0
+ ** in quicksort median
+*/
+
 t_stack	*get_median_location(t_stack **stack)
 {
-	t_stack	*median;
-
-	median = NULL;
 	if (stack && *stack)
 	{
 		while (*stack != NULL)
 		{
 			if ((*stack)->is_median == 1)
-				return (median = *stack);
+				return (*stack);
 			stack = &(*stack)->next;
 		}
 	}

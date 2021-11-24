@@ -6,11 +6,37 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:52 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 13:32:46 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/24 18:10:29 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	set_median_to_zero(t_stack **stack)
+{
+	if (stack)
+	{
+		while (*stack)
+		{
+			if ((*stack)->is_median == 1)
+			{
+				(*stack)->is_median = 0;
+				return ;
+			}
+			stack = &(*stack)->next;
+		}
+	}
+}
+/*
+#include <stdio.h>
+void printf_stack(t_stack **stack)
+{
+	while (*stack != NULL)
+	{
+		printf("median=%d\n", (*stack)->is_median);
+		stack = &(*stack)->next;
+	}
+}*/
 
 void	must_push_pb(t_stack **stack_a, t_stack **stack_b)
 {
@@ -21,12 +47,13 @@ void	must_push_pb(t_stack **stack_a, t_stack **stack_b)
 		ft_putstr_fd("pb\n", 1);
 		push_pb(stack_a, stack_b);
 	}
-	if (copy_stack(*stack_b) == -1)
+	set_median_to_zero(stack_b);
+	if (stack_b && copy_stack(*stack_b, 1) == -1)
 		error_stack(stack_a, stack_b, -1);
 	median = get_median_location(stack_b);
 	if (median == NULL)
 		error_stack(stack_a, stack_b, -1);
-	if ((*stack_b)->next)
+	if (stack_b && (*stack_b)->next)
 	{
 		if (median->number > (*stack_b)->number)
 		{

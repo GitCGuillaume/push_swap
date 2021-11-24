@@ -6,25 +6,25 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:06 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 15:02:23 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/24 18:26:49 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	seek_median(t_stack **stack_a, int median)
+void	seek_median(t_stack **stack, int median)
 {
-	if (stack_a == NULL)
+	if (stack == NULL)
 		return ;
-	while (*stack_a)
+	while (*stack)
 	{
-		if ((*stack_a)->number == median)
-			(*stack_a)->is_median = 1;
-		stack_a = &(*stack_a)->next;
+		if ((*stack)->number == median)
+			(*stack)->is_median = 1;
+		stack = &(*stack)->next;
 	}
 }
 
-int	copy_stack(t_stack *stack)
+int	copy_stack(t_stack *stack, int is_b)
 {
 	t_stack	*lst_median;
 	t_stack	*keep_address;
@@ -42,7 +42,7 @@ int	copy_stack(t_stack *stack)
 	}
 	if (lst_median == NULL)
 		return (-1);
-	median = quicksort_median(lst_median);
+	median = quicksort_median(lst_median, is_b);
 	if (median == NULL)
 		return (-1);
 	seek_median(&stack, median->number);
@@ -78,8 +78,6 @@ int	main(int argc, char **argv)
 	is_stack_ok(&stack_a, get_stack_ok);
 	while (stack_a->head != NULL)
 		stack_a = stack_a->head;
-	if (stack_a == NULL)
-		is_stack_ok(NULL, -1);
 	resolver(&stack_a);
 	ft_lstclear_stack(&stack_a);
 	return (0);

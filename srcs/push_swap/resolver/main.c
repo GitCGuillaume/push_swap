@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:20 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/23 18:33:26 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/24 18:13:15 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,9 @@ void	stack_a_order(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 
 void	sort_stack_a(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 {
-	//t_stack	*biggest;
 	int	max;
 	int	size;
 
-	//biggest = NULL;
-	//if (stack_a && *stack_a)
-	//	biggest = get_biggest(stack_a);
 	size = get_smaller_value(stack_a, (*median)->number);
 	size--;
 	max = ft_lstsize_stack(*stack_a);
@@ -67,10 +63,8 @@ void	sort_stack_a(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 				size++;
 			}
 		}
-		if (size == -1) //&& biggest->number != (*stack_a)->number)
-		{
+		if (size == -1)
 			must_push_pb(stack_a, stack_b);
-		}
 	}
 }
 
@@ -114,7 +108,7 @@ void	sort_median(t_stack **stack_a, t_stack **stack_b, t_stack **median,
 	{
 		if (*median != NULL)
 			(*median)->is_median = 0;
-		result = copy_stack(*stack_a);
+		result = copy_stack(*stack_a, 0);
 		if (result == -1)
 			error_stack(stack_a, stack_b, result);
 		*median = get_median_location(stack_a);
