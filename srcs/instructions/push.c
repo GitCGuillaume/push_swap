@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:01:33 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:01:56 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/25 14:31:26 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	goto_head(t_stack **stack_a, t_stack **stack_b)
 
 int	push_pa(t_stack **stack_a, t_stack **stack_b)
 {
-	ssize_t	atoi;
 	t_stack	*keep;
+	int	atoi;
 
 	if (stack_b == NULL || *stack_b == NULL || stack_a == NULL)
 		return (-1);
@@ -52,7 +52,7 @@ int	push_pa(t_stack **stack_a, t_stack **stack_b)
 
 int	push_pb(t_stack **stack_a, t_stack **stack_b)
 {
-	ssize_t	atoi;
+	int	atoi;
 
 	if (stack_a == NULL || *stack_a == NULL || stack_b == NULL)
 		return (-1);
