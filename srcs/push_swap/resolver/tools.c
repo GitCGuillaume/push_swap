@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:36 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/24 17:37:56 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/25 10:28:33 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ t_stack	*get_median_location(t_stack **stack)
 	}
 	return (NULL);
 }
+
+/*
+ ** Sort median will loop until median smallest
+ ** find that stack is not sorted
+*/
 
 int	median_smallest(t_stack **stack, int median)
 {

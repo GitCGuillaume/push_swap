@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:11 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/24 18:27:55 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/25 10:21:35 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	quicksort(t_stack *first, t_stack *last)
 		if (last->position > first->position)
 		{
 			pivot = partition(&first, &last);
-			if (pivot->head != NULL)
+			if (pivot && pivot->head != NULL)
 				quicksort(first, pivot->head);
-			if (pivot->next != NULL)
+			if (pivot && pivot->next != NULL)
 				quicksort(pivot->next, last);
 		}
 	}

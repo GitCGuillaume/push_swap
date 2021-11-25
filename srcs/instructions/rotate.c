@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:02:08 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 11:27:16 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/25 09:58:23 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,93 +14,89 @@
 
 int	rotate_ra(t_stack **stack_a, t_stack **median)
 {
-	if (stack_a && *stack_a)
+	if (!stack_a || !*stack_a)
+		return (0);
+	while ((*stack_a)->head != NULL)
+		stack_a = &(*stack_a)->head;
+	while (*stack_a != NULL)
 	{
-		while ((*stack_a)->head != NULL)
-			stack_a = &(*stack_a)->head;
-		while (*stack_a != NULL)
+		if ((*stack_a)->next != NULL)
 		{
-			if ((*stack_a)->next != NULL)
+			ft_swap(&(*stack_a)->number, &(*stack_a)->next->number);
+			ft_swap(&(*stack_a)->is_median, &(*stack_a)->next->is_median);
+			if (median && *median)
 			{
-				ft_swap(&(*stack_a)->number, &(*stack_a)->next->number);
-				ft_swap(&(*stack_a)->is_median, &(*stack_a)->next->is_median);
-				if (median && *median)
+				if ((*median)->next != NULL)
+					*median = (*median)->next;
+				else
 				{
-					if ((*median)->next != NULL)
-						*median = (*median)->next;
-					else
-					{
-						while ((*median)->head != NULL)
-							*median = (*median)->head;
-					}
+					while ((*median)->head != NULL)
+						*median = (*median)->head;
 				}
 			}
-			stack_a = &(*stack_a)->next;
 		}
+		stack_a = &(*stack_a)->next;
 	}
 	return (1);
 }
 
 int	rotate_rb(t_stack **stack_b)
 {
-	if (stack_b && *stack_b)
+	if (!stack_b || !*stack_b)
+		return (0);
+	while ((*stack_b)->head != NULL)
+		stack_b = &(*stack_b)->head;
+	while (*stack_b != NULL)
 	{
-		while ((*stack_b)->head != NULL)
-			stack_b = &(*stack_b)->head;
-		while (*stack_b != NULL)
+		if ((*stack_b)->next != NULL)
 		{
-			if ((*stack_b)->next != NULL)
-			{
-				ft_swap(&(*stack_b)->number, &(*stack_b)->next->number);
-				ft_swap(&(*stack_b)->is_median, &(*stack_b)->next->is_median);
-			}
-			stack_b = &(*stack_b)->next;
+			ft_swap(&(*stack_b)->number, &(*stack_b)->next->number);
+			ft_swap(&(*stack_b)->is_median, &(*stack_b)->next->is_median);
 		}
+		stack_b = &(*stack_b)->next;
 	}
 	return (1);
 }
 
 int	rotate_rra(t_stack **stack_a, t_stack **median)
 {
-	if (stack_a && *stack_a)
+	if (!stack_a || !*stack_a)
+		return (0);
+	while ((*stack_a)->next != NULL)
+		stack_a = &(*stack_a)->next;
+	while (*stack_a != NULL)
 	{
-		while ((*stack_a)->next != NULL)
-			stack_a = &(*stack_a)->next;
-		while (*stack_a != NULL)
+		if ((*stack_a)->head != NULL)
 		{
-			if ((*stack_a)->head != NULL)
+			ft_swap(&(*stack_a)->number, &(*stack_a)->head->number);
+			ft_swap(&(*stack_a)->is_median, &(*stack_a)->head->is_median);
+			if (median && *median)
 			{
-				ft_swap(&(*stack_a)->number, &(*stack_a)->head->number);
-				ft_swap(&(*stack_a)->is_median, &(*stack_a)->head->is_median);
-				if (median && *median)
+				if ((*median)->head != NULL)
+					*median = (*median)->head;
+				else
 				{
-					if ((*median)->head != NULL)
-						*median = (*median)->head;
-					else
-					{
-						while ((*median)->next != NULL)
-							*median = (*median)->next;
-					}
+					while ((*median)->next != NULL)
+						*median = (*median)->next;
 				}
 			}
-			stack_a = &(*stack_a)->head;
 		}
+		stack_a = &(*stack_a)->head;
 	}
 	return (1);
 }
 
 int	rotate_rrb(t_stack **stack_b)
 {
-	if (stack_b && *stack_b)
+	if (!stack_b || !stack_b)
+		return (0);
+	while ((*stack_b)->next != NULL)
+		stack_b = &(*stack_b)->next;
+	while (*stack_b != NULL)
 	{
-		while ((*stack_b)->next != NULL)
-			stack_b = &(*stack_b)->next;
-		while (*stack_b != NULL)
-		{
-			if ((*stack_b)->head != NULL)
-				ft_swap(&(*stack_b)->number, &(*stack_b)->head->number);
-			stack_b = &(*stack_b)->head;
-		}
+		if ((*stack_b)->head != NULL)
+			ft_swap(&(*stack_b)->number, &(*stack_b)->head->number);
+		stack_b = &(*stack_b)->head;
 	}
 	return (1);
 }

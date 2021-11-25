@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:02:25 by gchopin           #+#    #+#             */
-/*   Updated: 2021/05/10 14:02:27 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/25 09:52:57 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	swap_sa(t_stack **stack_a, t_stack **median)
 	int	old_a;
 	int	old_b;
 
-	if (ft_lstsize_stack(*stack_a) <= 1)
+	if (!stack_a || ft_lstsize_stack(*stack_a) <= 1)
 		return (0);
 	old_a = (*stack_a)->number;
 	old_b = (*stack_a)->next->number;
@@ -43,7 +43,7 @@ int	swap_sb(t_stack **stack_b)
 	int	old_a;
 	int	old_b;
 
-	if (ft_lstsize_stack(*stack_b) <= 1)
+	if (!stack_b || ft_lstsize_stack(*stack_b) <= 1)
 		return (0);
 	old_a = (*stack_b)->number;
 	old_b = (*stack_b)->next->number;
