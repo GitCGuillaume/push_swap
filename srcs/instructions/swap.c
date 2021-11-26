@@ -6,19 +6,19 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:02:25 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/25 09:52:57 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 14:44:50 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	swap_sa(t_stack **stack_a, t_stack **median)
+int	swap_sa(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 {
 	int	old_a;
 	int	old_b;
 
 	if (!stack_a || ft_lstsize_stack(*stack_a) <= 1)
-		return (0);
+		error_stack(stack_a, stack_b, -1);
 	old_a = (*stack_a)->number;
 	old_b = (*stack_a)->next->number;
 	ft_swap(&(*stack_a)->number, &(*stack_a)->next->number);
@@ -34,22 +34,22 @@ int	swap_sa(t_stack **stack_a, t_stack **median)
 		}
 	}
 	if (old_a == (*stack_a)->number || old_b == (*stack_a)->next->number)
-		return (0);
+		error_stack(stack_a, stack_b, -1);
 	return (1);
 }
 
-int	swap_sb(t_stack **stack_b)
+int	swap_sb(t_stack **stack_b, t_stack **stack_a)
 {
 	int	old_a;
 	int	old_b;
 
 	if (!stack_b || ft_lstsize_stack(*stack_b) <= 1)
-		return (0);
+		error_stack(stack_a, stack_b, -1);
 	old_a = (*stack_b)->number;
 	old_b = (*stack_b)->next->number;
 	ft_swap(&(*stack_b)->number, &(*stack_b)->next->number);
 	if (old_a == (*stack_b)->number || old_b == (*stack_b)->next->number)
-		return (0);
+		error_stack(stack_a, stack_b, -1);
 	return (1);
 }
 
@@ -58,9 +58,9 @@ int	swap_ss(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 	int	sa;
 	int	sb;
 
-	sa = swap_sa(stack_a, median);
-	sb = swap_sb(stack_b);
-	if (sa == 0 || sb == 0)
-		return (0);
+	sa = swap_sa(stack_a, stack_b, median);
+	sb = swap_sb(stack_b, stack_a);
+	if (sa != 1 || sb != 1)
+		error_stack(stack_a, stack_b, -1);
 	return (1);
 }

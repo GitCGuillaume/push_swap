@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:02:08 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/25 09:58:23 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 14:22:24 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	rotate_ra(t_stack **stack_a, t_stack **median)
 {
 	if (!stack_a || !*stack_a)
-		return (0);
+		return (-1);
 	while ((*stack_a)->head != NULL)
 		stack_a = &(*stack_a)->head;
 	while (*stack_a != NULL)
@@ -43,7 +43,7 @@ int	rotate_ra(t_stack **stack_a, t_stack **median)
 int	rotate_rb(t_stack **stack_b)
 {
 	if (!stack_b || !*stack_b)
-		return (0);
+		return (-1);
 	while ((*stack_b)->head != NULL)
 		stack_b = &(*stack_b)->head;
 	while (*stack_b != NULL)
@@ -61,7 +61,7 @@ int	rotate_rb(t_stack **stack_b)
 int	rotate_rra(t_stack **stack_a, t_stack **median)
 {
 	if (!stack_a || !*stack_a)
-		return (0);
+		return (-1);
 	while ((*stack_a)->next != NULL)
 		stack_a = &(*stack_a)->next;
 	while (*stack_a != NULL)
@@ -89,7 +89,7 @@ int	rotate_rra(t_stack **stack_a, t_stack **median)
 int	rotate_rrb(t_stack **stack_b)
 {
 	if (!stack_b || !stack_b)
-		return (0);
+		return (-1);
 	while ((*stack_b)->next != NULL)
 		stack_b = &(*stack_b)->next;
 	while (*stack_b != NULL)

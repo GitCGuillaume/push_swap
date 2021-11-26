@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:20 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/26 12:17:04 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 15:21:31 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 void	stack_a_order(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 {
-	if (stack_a && *stack_a)
+	if (!stack_a || !stack_a)
+		error_stack(stack_a, stack_b, -1);
+	if ((*stack_a)->next != NULL)
 	{
-		if ((*stack_a)->next != NULL)
+		if (stack_b && *stack_b && (*stack_b)->next
+			&& (*stack_a)->number > (*stack_a)->next->number
+			&& (*stack_b)->number < (*stack_b)->next->number)
 		{
-			if (stack_b && *stack_b && (*stack_b)->next
-				&& (*stack_a)->number > (*stack_a)->next->number
-				&& (*stack_b)->number < (*stack_b)->next->number)
-			{
-				swap_ss(stack_a, stack_b, median);
-				ft_putstr_fd("ss\n", 1);
-			}
-			else if ((*stack_a)->number > (*stack_a)->next->number)
-			{
-				swap_sa(stack_a, median);
-				ft_putstr_fd("sa\n", 1);
-			}
-			else
-			{
-				rotate_rra(stack_a, median);
-				ft_putstr_fd("rra\n", 1);
-			}
+			swap_ss(stack_a, stack_b, median);
+			ft_putstr_fd("ss\n", 1);
+		}
+		else if ((*stack_a)->number > (*stack_a)->next->number)
+		{
+			swap_sa(stack_a, stack_b, median);
+			ft_putstr_fd("sa\n", 1);
+		}
+		else
+		{
+			if (rotate_rra(stack_a, median) < 0)
+				error_stack(stack_a, stack_b, -1);
+			ft_putstr_fd("rra\n", 1);
 		}
 	}
 }
@@ -44,28 +44,27 @@ void	sort_stack_a(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 	int	max;
 	int	size;
 
+	if (!stack_a || !*stack_a)
+		error_stack(stack_a, stack_b, -1);
 	size = get_smaller_value(stack_a, stack_b, median);
 	size--;
 	max = ft_lstsize_stack(*stack_a);
-	if (stack_a && *stack_a)
+	if (size != -1)
 	{
-		if (size != -1)
+		if (max / 2 > size)
 		{
-			if (max / 2 > size)
-			{
-				rotate_stack(stack_a, stack_b, median, "ra");
-				ft_putstr_fd("ra\n", 1);
-				size--;
-			}
-			else
-			{
-				rotate_stack(stack_a, stack_b, median, "rra");
-				size++;
-			}
+			rotate_stack(stack_a, stack_b, median, "ra");
+			ft_putstr_fd("ra\n", 1);
+			size--;
 		}
-		if (size == -1)
-			must_push_pb(stack_a, stack_b);
+		else
+		{
+			rotate_stack(stack_a, stack_b, median, "rra");
+			size++;
+		}
 	}
+	if (size == -1)
+		must_push_pb(stack_a, stack_b);
 }
 
 void	sort_stack_b(t_stack **stack_a, t_stack **stack_b)
@@ -73,22 +72,12 @@ void	sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 	int	size;
 	int	max;
 
+	if (!stack_b || !*stack_b)
+		error_stack(stack_a, stack_b, -1);
 	size = rotation_move(stack_b, stack_a);
 	size--;
 	max = ft_lstsize_stack(*stack_b);
-	while (size > 0 && max > size)
-	{
-		if (max / 2 > size)
-		{
-			rotate_stack(stack_a, stack_b, 0, "rb");
-			size--;
-		}
-		else
-		{
-			rotate_stack(stack_a, stack_b, 0, "rrb");
-			size++;
-		}
-	}
+	sort_stack_b_two(stack_a, stack_b, &size, &max);
 	if (size == 0 || size > max)
 	{
 		ft_putstr_fd("pa\n", 1);

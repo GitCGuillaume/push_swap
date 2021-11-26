@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:59:12 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/26 13:20:30 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 15:20:57 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	is_stack_ok(t_stack **stack_a, int get_stack_ok);
  ** Instructions
 */
 
-int		swap_sa(t_stack **stack_a, t_stack **median);
-int		swap_sb(t_stack **stack_b);
+int		swap_sa(t_stack **stack_a, t_stack **stack_b, t_stack **median);
+int		swap_sb(t_stack **stack_b, t_stack **stack_a);
 int		swap_ss(t_stack **stack_a, t_stack **stack_b, t_stack **median);
 int		push_pa(t_stack **stack_a, t_stack **stack_b);
 int		push_pb(t_stack **stack_a, t_stack **stack_b);
@@ -98,5 +98,7 @@ int		median_smallest(t_stack **stack, int median);
 void	must_push_pb(t_stack **stack_a, t_stack **stack_b);
 void	rotate_stack(t_stack **stack_a, t_stack **stack_b,
 			t_stack **median, char *str);
+void	sort_stack_b_two(t_stack **stack_a, t_stack **stack_b,
+			int *size, int *max);
 
 #endif

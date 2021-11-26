@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:01:33 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/26 12:16:32 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 14:00:34 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	push_pa(t_stack **stack_a, t_stack **stack_b)
 	int		atoi;
 
 	if (stack_b == NULL || *stack_b == NULL || stack_a == NULL)
-		return (-1);
+		error_stack(stack_a, stack_b, -1);
 	goto_head(stack_a, stack_b);
 	atoi = (*stack_b)->number;
 	ft_lstadd_front_stack(stack_a, ft_lstnew_stack((int)atoi));

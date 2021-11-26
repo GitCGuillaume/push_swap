@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:52 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/26 12:27:57 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 15:21:41 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,16 @@ void	rotate_stack_two(t_stack **stack_a, t_stack **stack_b,
 	result = ft_strcmp(str, "rb");
 	if (result == 0)
 	{
-		rotate_rb(stack_b);
+		if (rotate_rb(stack_b) < 0)
+			error_stack(stack_a, stack_b, -1);
 		ft_putstr_fd("rb\n", 1);
 		return ;
 	}
 	result = ft_strcmp(str, "rrb");
 	if (result == 0)
 	{
-		rotate_rrb(stack_b);
+		if (rotate_rrb(stack_b) < 0)
+			error_stack(stack_a, stack_b, -1);
 		ft_putstr_fd("rrb\n", 1);
 		return ;
 	}
@@ -91,7 +93,8 @@ void	rotate_stack(t_stack **stack_a, t_stack **stack_b,
 	{
 		if (!median)
 			error_stack(stack_a, stack_b, -1);
-		rotate_ra(stack_a, median);
+		if (rotate_ra(stack_a, median) < 0)
+			error_stack(stack_a, stack_b, -1);
 		return ;
 	}
 	result = ft_strcmp(str, "rra");
@@ -99,9 +102,30 @@ void	rotate_stack(t_stack **stack_a, t_stack **stack_b,
 	{
 		if (!median)
 			error_stack(stack_a, stack_b, -1);
-		rotate_rra(stack_a, median);
+		if (rotate_rra(stack_a, median) < 0)
+			error_stack(stack_a, stack_b, -1);
 		ft_putstr_fd("rra\n", 1);
 		return ;
 	}
 	rotate_stack_two(stack_a, stack_b, str);
+}
+
+void	sort_stack_b_two(t_stack **stack_a, t_stack **stack_b,
+		int *size, int *max)
+{
+	if (!stack_b || !*stack_b)
+		error_stack(stack_a, stack_b, -1);
+	while (*size > 0 && *max > *size)
+	{
+		if (*max / 2 > *size)
+		{
+			rotate_stack(stack_a, stack_b, 0, "rb");
+			(*size)--;
+		}
+		else
+		{
+			rotate_stack(stack_a, stack_b, 0, "rrb");
+			(*size)++;
+		}
+	}
 }
