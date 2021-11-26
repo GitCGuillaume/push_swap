@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:01:10 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/22 10:22:59 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 11:22:33 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	check_duplicate(t_stack *stack)
 
 	value = stack->number;
 	position = stack->position;
+	if (!stack)
+		return (-1);
 	while (stack != NULL)
 	{
 		if (position != stack->position)

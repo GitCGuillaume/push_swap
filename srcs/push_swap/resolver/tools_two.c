@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:52 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/25 10:58:42 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 11:53:28 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	must_push_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*median;
 
+	if (!stack_a || !stack_b)
+		error_stack(stack_a, stack_b, -1);
 	if (stack_a && stack_b)
 	{
 		ft_putstr_fd("pb\n", 1);
@@ -40,7 +42,7 @@ void	must_push_pb(t_stack **stack_a, t_stack **stack_b)
 	set_median_to_zero(stack_b);
 	if (stack_b && copy_stack(*stack_b, 1) == -1)
 		error_stack(stack_a, stack_b, -1);
-	median = get_median_location(stack_b);
+	median = get_median_location(stack_b, stack_a);
 	if (median == NULL)
 		error_stack(stack_a, stack_b, -1);
 	if (stack_b && (*stack_b)->next)

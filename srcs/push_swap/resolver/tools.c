@@ -6,17 +6,42 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:36 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/25 10:28:33 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 12:15:34 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rotation_move(t_stack **stack, int value)
+int	get_biggest(t_stack **stack, t_stack **stack_a)
 {
+	t_stack	*biggest;
+
+	biggest = NULL;
+	if (!stack || !*stack)
+		error_stack(stack, stack_a, -1);
+	if (*stack)
+	{
+		biggest = *stack;
+		while (*stack != NULL)
+		{
+			if ((*stack)->number > biggest->number)
+				biggest = *stack;
+			stack = &(*stack)->next;
+		}
+		return (biggest->number);
+	}
+	return (0);
+}
+
+int	rotation_move(t_stack **stack, t_stack **stack_a)
+{
+	int	value;
 	int	size;
 
 	size = 0;
+	if (!stack || !*stack)
+		error_stack(stack, stack_a, -1);
+	value = get_biggest(stack, stack_a);
 	if (stack && *stack)
 	{
 		while (*stack != NULL)
@@ -30,29 +55,15 @@ int	rotation_move(t_stack **stack, int value)
 	return (-1);
 }
 
-t_stack	*get_biggest(t_stack **stack)
-{
-	t_stack	*biggest;
-
-	biggest = NULL;
-	if (*stack)
-	{
-		biggest = *stack;
-		while (*stack != NULL)
-		{
-			if ((*stack)->number > biggest->number)
-				biggest = *stack;
-			stack = &(*stack)->next;
-		}
-	}
-	return (biggest);
-}
-
-int	get_smaller_value(t_stack **stack, int value)
+int	get_smaller_value(t_stack **stack, t_stack **stack_b, t_stack **median)
 {
 	int	size;
+	int	value;
 
 	size = 0;
+	if (!stack || !*stack || !median || !*median)
+		error_stack(stack, stack_b, -1);
+	value = (*median)->number;
 	if (stack && *stack)
 	{
 		while (*stack != NULL)
@@ -72,8 +83,10 @@ int	get_smaller_value(t_stack **stack, int value)
  ** in quicksort median
 */
 
-t_stack	*get_median_location(t_stack **stack)
+t_stack	*get_median_location(t_stack **stack, t_stack **stack_2)
 {
+	if (!stack || !*stack)
+		error_stack(stack, stack_2, -1);
 	if (stack && *stack)
 	{
 		while (*stack != NULL)
@@ -93,6 +106,8 @@ t_stack	*get_median_location(t_stack **stack)
 
 int	median_smallest(t_stack **stack, int median)
 {
+	if (!stack)
+		return (-1);
 	if (stack && *stack)
 	{
 		while ((*stack)->head != NULL)

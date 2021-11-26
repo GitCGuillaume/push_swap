@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:20 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/24 18:13:15 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 12:17:04 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	sort_stack_a(t_stack **stack_a, t_stack **stack_b, t_stack **median)
 	int	max;
 	int	size;
 
-	size = get_smaller_value(stack_a, (*median)->number);
+	size = get_smaller_value(stack_a, stack_b, median);
 	size--;
 	max = ft_lstsize_stack(*stack_a);
 	if (stack_a && *stack_a)
@@ -73,7 +73,7 @@ void	sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 	int	size;
 	int	max;
 
-	size = rotation_move(stack_b, get_biggest(stack_b)->number);
+	size = rotation_move(stack_b, stack_a);
 	size--;
 	max = ft_lstsize_stack(*stack_b);
 	while (size > 0 && max > size)
@@ -102,7 +102,7 @@ void	sort_median(t_stack **stack_a, t_stack **stack_b, t_stack **median,
 	int	result;
 
 	result = 0;
-	if (median == NULL)
+	if (median == NULL || stack_a == NULL || !stack_b)
 		error_stack(stack_a, stack_b, -1);
 	while (size > 3 && median && result == 0)
 	{
@@ -111,8 +111,9 @@ void	sort_median(t_stack **stack_a, t_stack **stack_b, t_stack **median,
 		result = copy_stack(*stack_a, 0);
 		if (result == -1)
 			error_stack(stack_a, stack_b, result);
-		*median = get_median_location(stack_a);
+		*median = get_median_location(stack_a, stack_b);
 		result = median_smallest(stack_a, (*median)->number);
+		error_stack(stack_a, stack_b, result);
 		while (result == 0)
 		{
 			sort_stack_a(stack_a, stack_b, median);

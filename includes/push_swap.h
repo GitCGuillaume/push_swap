@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:59:12 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/24 17:37:17 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 12:17:42 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,9 @@ int		resolver(t_stack **stack_a);
  ** Resolver tools
  */
 
-int		rotation_move(t_stack **stack, int value);
-t_stack	*get_biggest(t_stack **stack);
-int		get_smaller_value(t_stack **stack, int median);
-t_stack	*get_median_location(t_stack **stack);
+int		rotation_move(t_stack **stack, t_stack **stack_a);
+int		get_smaller_value(t_stack **stack, t_stack **stack_b, t_stack **median);
+t_stack	*get_median_location(t_stack **stack, t_stack **stack_2);
 int		median_smallest(t_stack **stack, int median);
 void	must_push_pb(t_stack **stack_a, t_stack **stack_b);
 void	rotate_stack(t_stack **stack_a, t_stack **stack_b,
