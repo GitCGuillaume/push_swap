@@ -6,7 +6,7 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:59:12 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/26 12:17:42 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 13:20:30 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@ void	ft_lstdelone_stack(t_stack *lst);
 void	ft_lstclear_stack(t_stack **lst);
 t_stack	*ft_lstlast_stack(t_stack *lst);
 int		ft_lstsize_stack(t_stack *lst);
-
-/*
- ** MAIN
-*/
-
-void	seek_median(t_stack **stack_a, int median);
 
 /*
  ** GLOBALS FUCTIONS

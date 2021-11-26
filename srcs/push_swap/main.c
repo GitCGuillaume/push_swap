@@ -6,22 +6,26 @@
 /*   By: gchopin <gchopin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:03:06 by gchopin           #+#    #+#             */
-/*   Updated: 2021/11/26 12:27:11 by gchopin          ###   ########.fr       */
+/*   Updated: 2021/11/26 13:32:55 by gchopin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	seek_median(t_stack **stack, int median)
+int	seek_median(t_stack **stack, t_stack **stack_median)
 {
-	if (stack == NULL)
-		return ;
+	int	median;
+
+	if (!stack || !*stack || !stack_median || !*stack_median)
+		return (-1);
+	median = (*stack_median)->number;
 	while (*stack)
 	{
 		if ((*stack)->number == median)
 			(*stack)->is_median = 1;
 		stack = &(*stack)->next;
 	}
+	return (0);
 }
 
 int	copy_stack(t_stack *stack, int is_b)
@@ -43,9 +47,11 @@ int	copy_stack(t_stack *stack, int is_b)
 	if (lst_median == NULL)
 		return (-1);
 	median = quicksort_median(lst_median, is_b);
-	if (median == NULL)
+	if (seek_median(&stack, &median) < 0)
+	{
+		ft_lstclear_stack(&lst_median);
 		return (-1);
-	seek_median(&stack, median->number);
+	}
 	ft_lstclear_stack(&lst_median);
 	return (1);
 }
