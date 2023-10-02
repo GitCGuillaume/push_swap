@@ -3,8 +3,8 @@
 Ce projet demande à trier des nombres sous forme d'action en utilisant 2 piles (piles A et B), en un minimum d'action possible.
 Je me suis inspiré pour ce projet de l'algorithme de tri rapide (https://fr.wikipedia.org/wiki/Tri_rapide), et en divisant par la suite en fonction du nombre d'élément
 
-![psw1](https://github.com/GitCGuillaume/push_swap/assets/34135668/dd377271-c425-43ce-afa2-8ee70dc639f8)
-![psw2](https://github.com/GitCGuillaume/push_swap/assets/34135668/5002ea26-26f8-4935-b9f8-8d66268656cf)
+![psw1](https://github.com/GitCGuillaume/push_swap/assets/34135668/819ae232-0d1a-45f4-a0a8-099a00960aed)
+![psw2](https://github.com/GitCGuillaume/push_swap/assets/34135668/ea46aa97-615d-44b0-9aba-95feaea4f968)
 
 
 Source sujet
